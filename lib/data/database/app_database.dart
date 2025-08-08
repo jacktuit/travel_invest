@@ -1,6 +1,8 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+import 'tables/response_cache_table.dart';
+
 class AppDatabase {
   static const _dbName = 'app_database.db';
   static const _dbVersion = 1;
@@ -17,10 +19,23 @@ class AppDatabase {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, _dbName);
 
-    return await openDatabase(path, version: _dbVersion);
+    return await openDatabase(path, version: _dbVersion, onCreate: _onCreate);
   }
 
   static Future<void> _onCreate(Database db, int version) async {
-    await db.execute('');
+    await db.execute(ResponseCacheTable.createTable);
+  }
+
+  static Future<void> close() async {
+    if (_instance != null) {
+      await _instance!.close();
+      _instance = null;
+    }
+  }
+
+  static Future<void> deleteDb() async {
+    final dbPath = await getDatabasesPath();
+    final path = join(dbPath, _dbName);
+    await deleteDatabase(path);
   }
 }

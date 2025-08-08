@@ -1,0 +1,87 @@
+import 'dart:async';
+
+import 'package:travel_invest/app/router/router.dart';
+import 'package:travel_invest/app/router/routes.dart';
+import 'package:travel_invest/common/errors/unauthenticated_error.dart';
+import 'package:travel_invest/data/cache/user_cache.dart';
+import 'package:travel_invest/data/fetchy/fetchy.dart';
+
+import 'models/user_model.dart';
+
+final AuthRepository authRepository = AuthRepository();
+
+final class AuthRepository {
+  AuthRepository() {
+    _authStatusController = StreamController<bool>.broadcast();
+    _isLoggedIn = userCache.token != null;
+    _authStatusController.add(_isLoggedIn);
+  }
+
+  late StreamController<bool> _authStatusController;
+  late bool _isLoggedIn;
+
+  Stream<bool> get authStatus => _authStatusController.stream;
+
+  bool get isLoggedIn => _isLoggedIn;
+
+  Future<void> logout() async {
+    await userCache.clear();
+    _isLoggedIn = false;
+    _authStatusController.add(_isLoggedIn);
+    router.go(AppRoutes.login);
+  }
+
+  Future<void> refreshToken() async {
+    final refreshToken = userCache.refreshToken;
+
+    if (refreshToken == null) {
+      await logout();
+      throw UnauthenticatedError();
+    }
+
+    final response = await fetchy.dio.post(
+      '/auth/refresh/token',
+      data: {'refreshToken': refreshToken},
+    );
+
+    if (response.data?['status'] == 401 || response.statusCode == 401) {
+      await logout();
+      throw UnauthenticatedError();
+    }
+
+    final token = response.data?['token'];
+    final newRefreshToken = response.data?['refreshToken'];
+
+    await userCache.saveToken(
+      token: token,
+      refreshToken: newRefreshToken,
+      user: UserModel.empty(),
+    );
+  }
+
+  Future<void> login({
+    required String username,
+    required String password,
+  }) async {
+    final response = await fetchy.dio.post(
+      '/auth/login',
+      data: {'username': username, 'password': password},
+    );
+
+    if (response.data?['status'] == 401 || response.statusCode == 401) {
+      throw "Логин ёки парол хато киритилди";
+    }
+
+    final token = response.data?['token'];
+    final refreshToken = response.data?['refreshToken'];
+
+    await userCache.saveToken(
+      token: token,
+      refreshToken: refreshToken,
+      user: UserModel.empty(),
+    );
+
+    _isLoggedIn = true;
+    _authStatusController.add(_isLoggedIn);
+  }
+}
