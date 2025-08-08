@@ -1,18 +1,19 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class ResponseCacheEntity {
+  final String url;
+  final bool withAuth;
+  final String? json;
 
-part 'response_cache_entity.freezed.dart';
-part 'response_cache_entity.g.dart';
+  ResponseCacheEntity({required this.url, required this.withAuth, this.json});
 
-@freezed
-abstract class ResponseCacheEntity with _$ResponseCacheEntity {
-  const ResponseCacheEntity._();
+  Map<String, dynamic> toMap() {
+    return {'url': url, 'with_auth': withAuth ? 1 : 0, 'json': json};
+  }
 
-  const factory ResponseCacheEntity({
-    required String url,
-    int? withAuth,
-    String? json,
-  }) = _ResponseCacheEntity;
-
-  factory ResponseCacheEntity.fromJson(Map<String, dynamic> json) =>
-      _$ResponseCacheEntityFromJson(json);
+  factory ResponseCacheEntity.fromMap(Map<String, dynamic> map) {
+    return ResponseCacheEntity(
+      url: map['url'] ?? '',
+      withAuth: map['with_auth'] == 1,
+      json: map['json'],
+    );
+  }
 }
