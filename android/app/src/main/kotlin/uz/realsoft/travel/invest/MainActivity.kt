@@ -1,4 +1,4 @@
-package com.example.travel_invest
+package uz.realsoft.travel.invest
 
 import io.flutter.embedding.android.FlutterActivity
 
