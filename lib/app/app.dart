@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'router/router.dart';
+import 'theme/theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -15,6 +16,9 @@ class App extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
+      themeMode: ThemeMode.light,
+      theme: AppTheme.light,
+      darkTheme: null,
     );
   }
 }
