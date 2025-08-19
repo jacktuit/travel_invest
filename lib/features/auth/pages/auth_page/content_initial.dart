@@ -9,7 +9,16 @@ import 'package:travel_invest/widgets/inputs/my_text_field.dart';
 import '../../notifiers/auth_notifiers.dart';
 
 class ContentInitial extends HookConsumerWidget {
-  const ContentInitial({super.key});
+  const ContentInitial({
+    super.key,
+    required this.onGoogleTap,
+    required this.onFacebookTap,
+    required this.onAppleTap,
+  });
+
+  final void Function() onGoogleTap;
+  final void Function() onFacebookTap;
+  final void Function() onAppleTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -55,9 +64,9 @@ class ContentInitial extends HookConsumerWidget {
               ),
             ),
             SignInOptionsWidget(
-              onGoogleTap: () {},
-              onFacebookTap: () {},
-              onAppleTap: () {},
+              onGoogleTap: onGoogleTap,
+              onFacebookTap: onFacebookTap,
+              onAppleTap: onAppleTap,
             ),
             SizedBox(height: 16),
           ],

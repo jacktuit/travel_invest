@@ -1,7 +1,15 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:animations/animations.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:logger/logger.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:travel_invest/common/helpers/alert_helper.dart';
 
 import '../notifiers/auth_notifiers.dart';
 import 'auth_page/build_head.dart';
@@ -11,11 +19,117 @@ import 'auth_page/content_password.dart';
 import 'auth_page/content_sign_up.dart';
 import 'auth_page/content_sms_verification.dart';
 
-class AuthPage extends ConsumerWidget {
+class AuthPage extends StatefulHookConsumerWidget {
   const AuthPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends ConsumerState<AuthPage> {
+  final _logger = Logger();
+  final _signIn = GoogleSignIn.instance;
+
+  StreamSubscription<GoogleSignInAuthenticationEvent>?
+  _googleSignInEventsSubscription;
+
+  String _clientIdForGoogleSignIn() {
+    if (Platform.isAndroid) {
+      return kDebugMode
+          ? '657913602018-vk0qfqc8cci7th7mgavo34vpq2jc950t.apps.googleusercontent.com'
+          : '657913602018-iu54b6h3f3ut40v18u2kp7v9tmld3gb0.apps.googleusercontent.com';
+    } else if (Platform.isIOS) {
+      return '657913602018-e6l4ohplpt7bi0o3jmps07se7n9cjleg.apps.googleusercontent.com';
+    } else {
+      throw Exception('Google Sign-In is not supported on this platform.');
+    }
+  }
+
+  String _serverClientId() {
+    return '657913602018-6pjkhd5anl02ae4vn5t47mcd6s1s3p5a.apps.googleusercontent.com';
+  }
+
+  Future<void> onGoogleTap() async {
+    try {
+      unawaited(
+        _signIn
+            .initialize(
+              clientId: _clientIdForGoogleSignIn(),
+              serverClientId: _serverClientId(),
+            )
+            .then((_) {
+              _googleSignInEventsSubscription =
+                  _signIn.authenticationEvents.listen(_listener)
+                    ..onError((err) {
+                      _logger.e(err);
+                    });
+
+              if (Platform.isAndroid) {
+                _signIn.attemptLightweightAuthentication(
+                  reportAllExceptions: true,
+                );
+              } else if (Platform.isIOS) {
+                _signIn.authenticate();
+              }
+            }),
+      );
+    } catch (error, stackTrace) {
+      _logger.e([error, stackTrace]);
+    }
+  }
+
+  Future<void> onFacebookTap() async {}
+
+  Future<void> onAppleTap() async {
+    try {
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      if (mounted) {
+        AlertHelper.showSnackBar(context, 'User signed in with Apple');
+      }
+    } catch (error) {
+      if (mounted) {
+        AlertHelper.showSnackBar(context, error.toString());
+      }
+    }
+  }
+
+  void _listener(GoogleSignInAuthenticationEvent event) {
+    switch (event) {
+      case GoogleSignInAuthenticationEventSignIn(
+        :final GoogleSignInAccount user,
+      ):
+        _logger.i([user.authentication.idToken, user]);
+
+        if (mounted) {
+          AlertHelper.showSnackBar(
+            context,
+            'User signed in with Google: ${user.email}',
+          );
+        }
+
+        break;
+
+      case GoogleSignInAuthenticationEventSignOut():
+        _logger.i('User signed out');
+        break;
+    }
+  }
+
+  @override
+  void dispose() {
+    _googleSignInEventsSubscription?.cancel();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(authPageNotifierProvider);
 
     return PopScope(
@@ -63,10 +177,22 @@ class AuthPage extends ConsumerWidget {
                         );
                       },
                   child: state.$2.when(
-                    initial: () => const ContentInitial(),
-                    password: () => const ContentPassword(),
+                    initial: () => ContentInitial(
+                      onGoogleTap: onGoogleTap,
+                      onFacebookTap: onFacebookTap,
+                      onAppleTap: onAppleTap,
+                    ),
+                    password: () => ContentPassword(
+                      onGoogleTap: onGoogleTap,
+                      onFacebookTap: onFacebookTap,
+                      onAppleTap: onAppleTap,
+                    ),
                     smsVerification: () => const ContentSmsVerification(),
-                    signUp: () => const ContentSignUp(),
+                    signUp: () => ContentSignUp(
+                      onGoogleTap: onGoogleTap,
+                      onFacebookTap: onFacebookTap,
+                      onAppleTap: onAppleTap,
+                    ),
                   ),
                 ),
               ),
