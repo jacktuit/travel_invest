@@ -49,6 +49,30 @@ class $AssetsPngGen {
   ];
 }
 
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
+
+  /// File path: assets/svg/card_bar_image.svg
+  String get cardBarImage => 'assets/svg/card_bar_image.svg';
+
+  /// File path: assets/svg/explore_bar_image.svg
+  String get exploreBarImage => 'assets/svg/explore_bar_image.svg';
+
+  /// File path: assets/svg/home_bar_image.svg
+  String get homeBarImage => 'assets/svg/home_bar_image.svg';
+
+  /// File path: assets/svg/profile_bar_image.svg
+  String get profileBarImage => 'assets/svg/profile_bar_image.svg';
+
+  /// List of all assets
+  List<String> get values => [
+    cardBarImage,
+    exploreBarImage,
+    homeBarImage,
+    profileBarImage,
+  ];
+}
+
 class $AssetsTranslationsGen {
   const $AssetsTranslationsGen();
 
@@ -63,6 +87,7 @@ class Assets {
   const Assets._();
 
   static const $AssetsPngGen png = $AssetsPngGen();
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 
