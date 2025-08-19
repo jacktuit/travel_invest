@@ -10,7 +10,16 @@ import 'package:travel_invest/widgets/inputs/my_password_field.dart';
 import '../../notifiers/auth_notifiers.dart';
 
 class ContentPassword extends HookConsumerWidget {
-  const ContentPassword({super.key});
+  const ContentPassword({
+    super.key,
+    required this.onGoogleTap,
+    required this.onFacebookTap,
+    required this.onAppleTap,
+  });
+
+  final void Function() onGoogleTap;
+  final void Function() onFacebookTap;
+  final void Function() onAppleTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -70,9 +79,9 @@ class ContentPassword extends HookConsumerWidget {
               ),
             ),
             SignInOptionsWidget(
-              onGoogleTap: () {},
-              onFacebookTap: () {},
-              onAppleTap: () {},
+              onGoogleTap: onGoogleTap,
+              onFacebookTap: onFacebookTap,
+              onAppleTap: onAppleTap,
             ),
             SizedBox(height: 16),
           ],
