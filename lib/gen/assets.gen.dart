@@ -17,6 +17,9 @@ class $AssetsPngGen {
   /// File path: assets/png/apple.png
   AssetGenImage get apple => const AssetGenImage('assets/png/apple.png');
 
+  /// File path: assets/png/applogo.png
+  AssetGenImage get applogo => const AssetGenImage('assets/png/applogo.png');
+
   /// File path: assets/png/auth_image.png
   AssetGenImage get authImage =>
       const AssetGenImage('assets/png/auth_image.png');
@@ -27,6 +30,9 @@ class $AssetsPngGen {
   /// File path: assets/png/google.png
   AssetGenImage get google => const AssetGenImage('assets/png/google.png');
 
+  /// File path: assets/png/logo_app.png
+  AssetGenImage get logoApp => const AssetGenImage('assets/png/logo_app.png');
+
   /// File path: assets/png/logo_with_name.png
   AssetGenImage get logoWithName =>
       const AssetGenImage('assets/png/logo_with_name.png');
@@ -34,9 +40,11 @@ class $AssetsPngGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     apple,
+    applogo,
     authImage,
     facebook,
     google,
+    logoApp,
     logoWithName,
   ];
 }
