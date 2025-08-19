@@ -4,12 +4,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_invest/common/utils/validators.dart';
 import 'package:travel_invest/widgets/auth_widgets/sign_in_options_widget.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
-import 'package:travel_invest/widgets/inputs/my_text_field.dart';
+import 'package:travel_invest/widgets/inputs/my_password_field.dart';
 
-import '../../notifiers/auth_notifiers.dart';
-
-class ContentInitial extends HookConsumerWidget {
-  const ContentInitial({super.key});
+class ContentSignUp extends HookConsumerWidget {
+  const ContentSignUp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +15,8 @@ class ContentInitial extends HookConsumerWidget {
     final textTheme = theme.textTheme;
 
     final formKey = useMemoized(() => GlobalKey<FormState>());
-    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    final confirmPasswordController = useTextEditingController();
 
     return SingleChildScrollView(
       child: Form(
@@ -29,18 +28,31 @@ class ContentInitial extends HookConsumerWidget {
             Padding(
               padding: EdgeInsets.only(left: 24, right: 24, top: 24),
               child: Text(
-                'Please enter your email address to sign in.',
+                'Create a password to set up your new account.',
                 style: textTheme.bodySmall,
               ),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(24, 37, 24, 0),
-              child: MyTextField(
-                labelText: 'Email',
-                hintText: 'abc@example.com',
-                keyboardType: TextInputType.emailAddress,
-                controller: emailController,
-                validator: (value) => Validators.validateEmail(value),
+              child: MyPasswordField(
+                controller: passwordController,
+                labelText: 'Password',
+                hintText: 'Enter your password',
+                validator: (value) => Validators.validatePassword(value),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(24, 17, 24, 0),
+              child: MyPasswordField(
+                controller: confirmPasswordController,
+                labelText: 'Confirm Password',
+                hintText: 'Re-enter your password',
+                validator: (value) {
+                  if (value != passwordController.text) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
               ),
             ),
             Padding(
@@ -48,7 +60,7 @@ class ContentInitial extends HookConsumerWidget {
               child: MyButton(
                 onPressed: () {
                   if (formKey.currentState?.validate() ?? false) {
-                    ref.read(authPageNotifierProvider.notifier).goToPassword();
+                    // Handle sign-in logic here
                   }
                 },
                 text: 'Log In',

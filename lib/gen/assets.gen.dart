@@ -14,16 +14,31 @@ import 'package:flutter/widgets.dart';
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/apple.png
+  AssetGenImage get apple => const AssetGenImage('assets/png/apple.png');
+
   /// File path: assets/png/auth_image.png
   AssetGenImage get authImage =>
       const AssetGenImage('assets/png/auth_image.png');
+
+  /// File path: assets/png/facebook.png
+  AssetGenImage get facebook => const AssetGenImage('assets/png/facebook.png');
+
+  /// File path: assets/png/google.png
+  AssetGenImage get google => const AssetGenImage('assets/png/google.png');
 
   /// File path: assets/png/logo_with_name.png
   AssetGenImage get logoWithName =>
       const AssetGenImage('assets/png/logo_with_name.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [authImage, logoWithName];
+  List<AssetGenImage> get values => [
+    apple,
+    authImage,
+    facebook,
+    google,
+    logoWithName,
+  ];
 }
 
 class $AssetsTranslationsGen {

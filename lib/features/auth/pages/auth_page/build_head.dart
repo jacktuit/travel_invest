@@ -38,10 +38,10 @@ class _AuthHeaderText extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final text = ref.watch(authHeaderTextProvider);
+    final state = ref.watch(authPageNotifierProvider);
 
     return AnimatedSwitcher(
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: AuthPageState.animationDuration),
       transitionBuilder: (child, animation) {
         return SizeTransition(
           axis: Axis.horizontal,
@@ -50,8 +50,8 @@ class _AuthHeaderText extends ConsumerWidget {
         );
       },
       child: Text(
-        key: ValueKey(text),
-        text,
+        key: ValueKey(state.$2.headerText),
+        state.$2.headerText,
         style: TextStyle(
           color: Color(0xffEEEEEE),
           fontSize: 32,

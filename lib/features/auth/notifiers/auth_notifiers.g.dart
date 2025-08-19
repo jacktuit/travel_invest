@@ -6,21 +6,25 @@ part of 'auth_notifiers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authHeaderTextHash() => r'2b53b71cddb388582eb6c10136eb0b128d56a3ed';
+String _$authPageNotifierHash() => r'c368f6874047e59cee75071a87a20662ffbcf4c8';
 
-/// See also [AuthHeaderText].
-@ProviderFor(AuthHeaderText)
-final authHeaderTextProvider =
-    AutoDisposeNotifierProvider<AuthHeaderText, String>.internal(
-      AuthHeaderText.new,
-      name: r'authHeaderTextProvider',
+/// See also [AuthPageNotifier].
+@ProviderFor(AuthPageNotifier)
+final authPageNotifierProvider =
+    AutoDisposeNotifierProvider<
+      AuthPageNotifier,
+      (AuthPageState?, AuthPageState)
+    >.internal(
+      AuthPageNotifier.new,
+      name: r'authPageNotifierProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
-          : _$authHeaderTextHash,
+          : _$authPageNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$AuthHeaderText = AutoDisposeNotifier<String>;
+typedef _$AuthPageNotifier =
+    AutoDisposeNotifier<(AuthPageState?, AuthPageState)>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
