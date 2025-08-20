@@ -5,10 +5,12 @@ import 'package:animations/animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:travel_invest/app/router/routes.dart';
 import 'package:travel_invest/common/helpers/alert_helper.dart';
 
 import '../notifiers/auth_notifiers.dart';
@@ -91,6 +93,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
 
       if (mounted) {
         AlertHelper.showSnackBar(context, 'User signed in with Apple');
+        context.go(AppRoutes.home);
       }
     } catch (error) {
       if (mounted) {
@@ -111,6 +114,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
             context,
             'User signed in with Google: ${user.email}',
           );
+          context.go(AppRoutes.home);
         }
 
         break;
