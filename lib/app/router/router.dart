@@ -1,9 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/pages/auth_page.dart';
-import '../../features/auth/pages/login_page.dart';
 import '../../features/home/pages/bottom_bar.dart';
-import '../../features/home/pages/home_page.dart';
 import 'routes.dart';
 
 String _initialLocation() {
@@ -32,12 +30,6 @@ final router = GoRouter(
       path: AppRoutes.auth,
       builder: (context, state) {
         return AuthPage();
-      },
-    ),
-    GoRoute(
-      path: AppRoutes.login,
-      builder: (context, state) {
-        return LoginPage();
       },
     ),
   ],

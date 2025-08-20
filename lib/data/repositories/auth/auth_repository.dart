@@ -28,7 +28,7 @@ final class AuthRepository {
     await userCache.clear();
     _isLoggedIn = false;
     _authStatusController.add(_isLoggedIn);
-    router.go(AppRoutes.login);
+    router.go(AppRoutes.auth);
   }
 
   Future<void> refreshToken() async {
