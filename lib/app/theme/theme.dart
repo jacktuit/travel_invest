@@ -5,6 +5,7 @@ import 'colors.dart';
 abstract final class AppTheme {
   static final light = ThemeData(
     fontFamily: 'Inter',
+    cardColor: AppColors.cardLight,
     scaffoldBackgroundColor: AppColors.backgroundLight,
     dividerColor: AppColors.dividerLight,
     shadowColor: AppColors.shadowLight,
@@ -15,6 +16,7 @@ abstract final class AppTheme {
       brightness: Brightness.light,
       surface: AppColors.backgroundLight,
       onSurface: AppColors.textLight,
+      onSurfaceVariant: AppColors.bodyTextLight,
     ),
     dividerTheme: DividerThemeData(
       color: AppColors.dividerLight,
@@ -35,6 +37,18 @@ abstract final class AppTheme {
         fontSize: 14.5,
         fontWeight: FontWeight.w500,
         height: 1.4,
+      ),
+      labelSmall: TextStyle(
+        color: Color(0xff1B163F),
+        fontSize: 13,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+      ),
+      labelMedium: TextStyle(
+        color: Color(0xff0C0A1C),
+        fontSize: 16.4,
+        fontWeight: FontWeight.w500,
+        height: 1.5,
       ),
     ),
   );

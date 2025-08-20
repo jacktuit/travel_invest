@@ -79,7 +79,7 @@ class SignInOptionWidget extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(9),
           child: Material(
-            color: theme.scaffoldBackgroundColor,
+            color: theme.cardColor,
             child: InkWell(
               onTap: onTap,
               child: Container(

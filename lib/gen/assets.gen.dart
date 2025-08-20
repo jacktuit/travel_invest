@@ -37,6 +37,9 @@ class $AssetsPngGen {
   AssetGenImage get logoWithName =>
       const AssetGenImage('assets/png/logo_with_name.png');
 
+  /// File path: assets/png/prize.png
+  AssetGenImage get prize => const AssetGenImage('assets/png/prize.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     apple,
@@ -46,30 +49,51 @@ class $AssetsPngGen {
     google,
     logoApp,
     logoWithName,
+    prize,
   ];
 }
 
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
-  /// File path: assets/svg/card_bar_image.svg
-  String get cardBarImage => 'assets/svg/card_bar_image.svg';
+  /// File path: assets/svg/bell_filled.svg
+  String get bellFilled => 'assets/svg/bell_filled.svg';
 
-  /// File path: assets/svg/explore_bar_image.svg
-  String get exploreBarImage => 'assets/svg/explore_bar_image.svg';
+  /// File path: assets/svg/bookmark_filled.svg
+  String get bookmarkFilled => 'assets/svg/bookmark_filled.svg';
 
-  /// File path: assets/svg/home_bar_image.svg
-  String get homeBarImage => 'assets/svg/home_bar_image.svg';
+  /// File path: assets/svg/bookmark_outlined.svg
+  String get bookmarkOutlined => 'assets/svg/bookmark_outlined.svg';
 
-  /// File path: assets/svg/profile_bar_image.svg
-  String get profileBarImage => 'assets/svg/profile_bar_image.svg';
+  /// File path: assets/svg/explore_filled.svg
+  String get exploreFilled => 'assets/svg/explore_filled.svg';
+
+  /// File path: assets/svg/explore_outlined.svg
+  String get exploreOutlined => 'assets/svg/explore_outlined.svg';
+
+  /// File path: assets/svg/home_filled.svg
+  String get homeFilled => 'assets/svg/home_filled.svg';
+
+  /// File path: assets/svg/home_outlined.svg
+  String get homeOutlined => 'assets/svg/home_outlined.svg';
+
+  /// File path: assets/svg/profile_filled.svg
+  String get profileFilled => 'assets/svg/profile_filled.svg';
+
+  /// File path: assets/svg/profile_outlined.svg
+  String get profileOutlined => 'assets/svg/profile_outlined.svg';
 
   /// List of all assets
   List<String> get values => [
-    cardBarImage,
-    exploreBarImage,
-    homeBarImage,
-    profileBarImage,
+    bellFilled,
+    bookmarkFilled,
+    bookmarkOutlined,
+    exploreFilled,
+    exploreOutlined,
+    homeFilled,
+    homeOutlined,
+    profileFilled,
+    profileOutlined,
   ];
 }
 

@@ -130,6 +130,8 @@ class _AuthPageState extends ConsumerState<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     final state = ref.watch(authPageNotifierProvider);
 
     return PopScope(
@@ -144,6 +146,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
         child: Scaffold(
           extendBodyBehindAppBar: true,
           resizeToAvoidBottomInset: true,
+          backgroundColor: theme.cardColor,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.transparent,

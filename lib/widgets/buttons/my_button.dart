@@ -10,6 +10,7 @@ class MyButton extends StatelessWidget {
     this.width = double.infinity,
     this.height = 48,
     this.fontSize = 14,
+    this.borderRadius = 10,
   });
 
   final void Function() onPressed;
@@ -19,6 +20,7 @@ class MyButton extends StatelessWidget {
   final double width;
   final double height;
   final double fontSize;
+  final double borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class MyButton extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(borderRadius),
           gradient: isDisabled
               ? null
               : LinearGradient(
@@ -79,7 +81,7 @@ class MyButton extends StatelessWidget {
             padding: EdgeInsets.zero,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(borderRadius),
             ),
             visualDensity: VisualDensity.standard,
             textStyle: TextStyle(
