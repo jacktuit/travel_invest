@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:travel_invest/app/router/routes.dart';
 
 class BuildMoreAbout extends StatelessWidget {
   const BuildMoreAbout({super.key});
@@ -24,7 +26,9 @@ class BuildMoreAbout extends StatelessWidget {
           ),
           SizedBox(width: 2),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push(AppRoutes.aboutUs);
+            },
             style: TextButton.styleFrom(
               padding: EdgeInsets.symmetric(horizontal: 4),
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,

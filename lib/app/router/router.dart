@@ -6,7 +6,7 @@ import '../../features/home/pages/home_page.dart';
 import 'routes.dart';
 
 String _initialLocation() {
-  String initialLocation = AppRoutes.aboutUs;
+  String initialLocation = AppRoutes.home;
 
   return initialLocation;
 }

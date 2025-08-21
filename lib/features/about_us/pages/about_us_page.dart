@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:travel_invest/widgets/app_bars/my_app_bar.dart';
 
+import 'about_us_page/build_bottom.dart';
+import 'about_us_page/build_info.dart';
 import 'about_us_page/build_video.dart';
 
 class AboutUsPage extends StatelessWidget {
@@ -18,9 +20,10 @@ class AboutUsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: [BuildVideo()],
+          children: [BuildVideo(), BuildInfo()],
         ),
       ),
+      bottomNavigationBar: BuildBottom(),
     );
   }
 }
