@@ -11,22 +11,25 @@ class BuildInviteCard extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
-    return MyCard(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'Invite Friends',
-            style: textTheme.titleMedium?.copyWith(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              height: 1.2,
+    return Padding(
+      padding: EdgeInsets.only(top: 8, bottom: 8),
+      child: MyCard(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Invite Friends',
+              style: textTheme.titleMedium?.copyWith(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                height: 1.2,
+              ),
             ),
-          ),
-          _Percent(),
-          _PeopleAndButton(),
-        ],
+            _Percent(),
+            Spacer(),
+            _PeopleAndButton(),
+          ],
+        ),
       ),
     );
   }
@@ -41,7 +44,7 @@ class _Percent extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 16, 25, 16),
+      padding: EdgeInsets.fromLTRB(0, 16, 25, 0),
       child: RichText(
         text: TextSpan(
           text: "Invite friends to the program, you'll receive ",
@@ -72,7 +75,6 @@ const _images = [
   'https://images.unsplash.com/photo-1654110455429-cf322b40a906?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D',
   'https://photoavatarmaker.com/wp-content/uploads/2025/04/linkedin-avatar-sample.jpeg',
   'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI3fHx8ZW58MHx8fHx8',
-  'https://lucid.content-delivery-one.com/cdn-cgi/image/w=600,format=auto,metadata=none/66c445a35f781.png',
 ];
 
 const double _imageSize = 40;
@@ -91,7 +93,7 @@ class _PeopleAndButton extends StatelessWidget {
               _Image(url: _images[0], left: 0),
               _Image(url: _images[1], left: _imageSize - 10),
               _Image(url: _images[2], left: 2 * _imageSize - 20),
-              _Image(url: _images[3], left: 3 * _imageSize - 30),
+              _Image(url: _images[1], left: 3 * _imageSize - 30),
             ],
           ),
         ),

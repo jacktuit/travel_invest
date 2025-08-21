@@ -4,7 +4,7 @@ import 'colors.dart';
 
 abstract final class AppTheme {
   static final light = ThemeData(
-    fontFamily: 'Inter',
+    fontFamily: 'Manrope',
     cardColor: AppColors.cardLight,
     scaffoldBackgroundColor: AppColors.backgroundLight,
     dividerColor: AppColors.dividerLight,
@@ -51,5 +51,14 @@ abstract final class AppTheme {
         height: 1.5,
       ),
     ),
+    extensions: const [
+      MyColors(
+        icon: Color(0xff6C7278),
+        text: Color(0xff1A1C1E),
+        background: Color(0xffF4F4F4),
+        card: Color(0xffFFFFFF),
+        divider: Color(0xffCED4DA),
+      ),
+    ],
   );
 }

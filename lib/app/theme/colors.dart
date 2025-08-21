@@ -12,3 +12,52 @@ abstract final class AppColors {
   static const shadowLight = Color(0xfff4f5fa);
   static const hintLight = Color(0xffACB5BB);
 }
+
+@immutable
+class MyColors extends ThemeExtension<MyColors> {
+  final Color icon;
+  final Color text;
+  final Color background;
+  final Color card;
+  final Color divider;
+
+  const MyColors({
+    required this.icon,
+    required this.text,
+    required this.background,
+    required this.card,
+    required this.divider,
+  });
+
+  @override
+  ThemeExtension<MyColors> copyWith({
+    Color? icon,
+    Color? text,
+    Color? background,
+    Color? card,
+    Color? divider,
+  }) {
+    return MyColors(
+      icon: icon ?? this.icon,
+      text: text ?? this.text,
+      background: background ?? this.background,
+      card: card ?? this.card,
+      divider: divider ?? this.divider,
+    );
+  }
+
+  @override
+  ThemeExtension<MyColors> lerp(
+    covariant ThemeExtension<MyColors>? other,
+    double t,
+  ) {
+    if (other is! MyColors) return this;
+    return MyColors(
+      icon: Color.lerp(icon, other.icon, t) ?? icon,
+      text: Color.lerp(text, other.text, t) ?? text,
+      background: Color.lerp(background, other.background, t) ?? background,
+      card: Color.lerp(card, other.card, t) ?? card,
+      divider: Color.lerp(divider, other.divider, t) ?? divider,
+    );
+  }
+}

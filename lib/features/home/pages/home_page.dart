@@ -84,10 +84,8 @@ class HomePage extends StatelessWidget {
         children: [
           BuildWelcome(),
           BuildMoreAbout(),
-          Expanded(child: BuildInvestCard()),
-          SizedBox(height: 8),
-          BuildInviteCard(),
-          SizedBox(height: 8),
+          BuildInvestCard(),
+          Expanded(child: BuildInviteCard()),
         ],
       ),
       bottomNavigationBar: const BuildNavigation(),

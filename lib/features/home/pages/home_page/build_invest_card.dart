@@ -13,8 +13,8 @@ class BuildInvestCard extends StatelessWidget {
 
     return MyCard(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             'Invest in Tourism Development',
@@ -24,6 +24,7 @@ class BuildInvestCard extends StatelessWidget {
               height: 1.2,
             ),
           ),
+          SizedBox(height: 24),
           Text(
             'Receive Discounts',
             style: textTheme.titleMedium?.copyWith(
@@ -32,8 +33,11 @@ class BuildInvestCard extends StatelessWidget {
               height: 1.2,
             ),
           ),
+          SizedBox(height: 16),
           _BuildMultiplies(),
+          SizedBox(height: 16),
           _PrizeDraws(),
+          SizedBox(height: 24),
           MyButton(onPressed: () {}, text: 'Start Investing'),
         ],
       ),

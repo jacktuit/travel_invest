@@ -12,7 +12,7 @@ class BuildWelcome extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(16, 24, 16, 0),
       child: RichText(
         text: TextSpan(
-          text: 'Welcome to the World of ',
+          text: 'Welcome to the World\nof ',
           style: textTheme.labelMedium?.copyWith(
             fontSize: 32,
             fontWeight: FontWeight.w500,

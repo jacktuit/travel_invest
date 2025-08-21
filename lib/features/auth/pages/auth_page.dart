@@ -12,6 +12,7 @@ import 'package:logger/logger.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:travel_invest/app/router/routes.dart';
 import 'package:travel_invest/common/helpers/alert_helper.dart';
+import 'package:travel_invest/data/fetchy/fetchy.dart';
 
 import '../notifiers/auth_notifiers.dart';
 import 'auth_page/build_head.dart';
@@ -90,6 +91,16 @@ class _AuthPageState extends ConsumerState<AuthPage> {
           AppleIDAuthorizationScopes.fullName,
         ],
       );
+
+      _logger.e([
+        appleCredential.authorizationCode,
+        appleCredential.identityToken,
+        appleCredential.userIdentifier,
+      ]);
+
+      fetchy.post('/services/platon-auth/api/oauth2-validate?method=apple', {
+        'code': appleCredential.authorizationCode,
+      }, log: true);
 
       if (mounted) {
         AlertHelper.showSnackBar(context, 'User signed in with Apple');
