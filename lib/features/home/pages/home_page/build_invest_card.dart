@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:travel_invest/app/router/routes.dart';
 import 'package:travel_invest/gen/assets.gen.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
 import 'package:travel_invest/widgets/cards/my_card.dart';
@@ -38,7 +40,12 @@ class BuildInvestCard extends StatelessWidget {
           SizedBox(height: 16),
           _PrizeDraws(),
           SizedBox(height: 24),
-          MyButton(onPressed: () {}, text: 'Start Investing'),
+          MyButton(
+            onPressed: () {
+              context.push(AppRoutes.discountCards);
+            },
+            text: 'Start Investing',
+          ),
         ],
       ),
     );

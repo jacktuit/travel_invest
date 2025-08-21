@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:travel_invest/app/router/routes.dart';
 import 'package:travel_invest/app/theme/extensions.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
 import 'package:travel_invest/widgets/buttons/my_outlined_button.dart';
@@ -24,7 +26,12 @@ class BuildBottom extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: MyButton(onPressed: () {}, text: 'Start investing'),
+                child: MyButton(
+                  onPressed: () {
+                    context.pushReplacement(AppRoutes.discountCards);
+                  },
+                  text: 'Start investing',
+                ),
               ),
             ],
           ),
