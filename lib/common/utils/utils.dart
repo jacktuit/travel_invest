@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
@@ -33,6 +36,30 @@ abstract final class Utils {
 
   static String generateUuid() {
     return _uuid.v4();
+  }
+
+  static String? _deviceId;
+
+  static Future<String> getDeviceId() async {
+    if (_deviceId != null) {
+      return _deviceId!;
+    }
+
+    if (Platform.isAndroid) {
+      final deviceInfo = DeviceInfoPlugin();
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      _deviceId = androidInfo.id;
+      return _deviceId!;
+    }
+
+    if (Platform.isIOS) {
+      final deviceInfo = DeviceInfoPlugin();
+      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      _deviceId = iosInfo.identifierForVendor ?? '';
+      return _deviceId!;
+    }
+    _deviceId = 'device_id';
+    return _deviceId!;
   }
 
   static String beautifyLeftSeconds(int seconds) {

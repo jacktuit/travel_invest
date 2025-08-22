@@ -9,6 +9,7 @@ import '../../common/errors/server_error.dart';
 import '../../common/errors/unauthenticated_error.dart';
 import '../../common/helpers/connection_helper.dart';
 import '../../common/utils/constants.dart';
+import '../../common/utils/utils.dart';
 import '../cache/user_cache.dart';
 import '../database/entities/response_cache_entity.dart';
 import '../repositories/auth/auth_repository.dart';
@@ -208,7 +209,7 @@ final class Fetchy {
     bool log = false,
     CancelToken? cancelToken,
   }) async {
-    final headers = <String, String>{};
+    final headers = <String, String>{'device_id': await Utils.getDeviceId()};
 
     try {
       final response = await dio.post(
