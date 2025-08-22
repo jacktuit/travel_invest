@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:travel_invest/widgets/app_bars/my_app_bar.dart';
 
-import 'about_us_page/build_bottom.dart';
-import 'about_us_page/build_info.dart';
-import 'about_us_page/build_video.dart';
+import 'discount_cards/build_cards.dart';
+import 'discount_cards/build_info.dart';
+import 'discount_cards/build_video.dart';
 
-class AboutUsPage extends StatelessWidget {
-  const AboutUsPage({super.key});
+class DiscountCardsPage extends StatelessWidget {
+  const DiscountCardsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +14,15 @@ class AboutUsPage extends StatelessWidget {
       appBar: myAppBar(
         context: context,
         hasBackButton: true,
-        title: 'About us',
+        title: 'Discount cards',
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: [BuildVideo(), BuildInfo()],
+          children: [BuildVideo(), BuildInfo(), BuildCards()],
         ),
       ),
-      bottomNavigationBar: BuildBottom(),
     );
   }
 }

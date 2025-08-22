@@ -36,6 +36,9 @@ dependencies:
   flutter_svg: ^2.0.13
   salomon_bottom_bar: ^3.3.2
   cached_network_image: ^3.4.1
+  video_player: ^2.10.0
+  chewie: ^1.12.1
+  carousel_slider: ^5.1.1
   device_info_plus: ^11.3.0
 
 

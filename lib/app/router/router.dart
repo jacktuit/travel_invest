@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/about_us/pages/about_us_page.dart';
 import '../../features/auth/pages/auth_page.dart';
+import '../../features/discount_cards/pages/discount_cards_page.dart';
 import '../../features/home/pages/home_page.dart';
 import 'routes.dart';
 
@@ -37,6 +38,12 @@ final router = GoRouter(
       path: AppRoutes.aboutUs,
       builder: (context, state) {
         return AboutUsPage();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.discountCards,
+      builder: (context, state) {
+        return DiscountCardsPage();
       },
     ),
   ],

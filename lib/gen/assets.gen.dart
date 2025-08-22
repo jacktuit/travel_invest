@@ -24,6 +24,18 @@ class $AssetsPngGen {
   AssetGenImage get authImage =>
       const AssetGenImage('assets/png/auth_image.png');
 
+  /// File path: assets/png/card_black.png
+  AssetGenImage get cardBlack =>
+      const AssetGenImage('assets/png/card_black.png');
+
+  /// File path: assets/png/card_brown.png
+  AssetGenImage get cardBrown =>
+      const AssetGenImage('assets/png/card_brown.png');
+
+  /// File path: assets/png/card_green.png
+  AssetGenImage get cardGreen =>
+      const AssetGenImage('assets/png/card_green.png');
+
   /// File path: assets/png/facebook.png
   AssetGenImage get facebook => const AssetGenImage('assets/png/facebook.png');
 
@@ -32,6 +44,10 @@ class $AssetsPngGen {
 
   /// File path: assets/png/logo_app.png
   AssetGenImage get logoApp => const AssetGenImage('assets/png/logo_app.png');
+
+  /// File path: assets/png/logo_white.png
+  AssetGenImage get logoWhite =>
+      const AssetGenImage('assets/png/logo_white.png');
 
   /// File path: assets/png/logo_with_name.png
   AssetGenImage get logoWithName =>
@@ -45,9 +61,13 @@ class $AssetsPngGen {
     apple,
     applogo,
     authImage,
+    cardBlack,
+    cardBrown,
+    cardGreen,
     facebook,
     google,
     logoApp,
+    logoWhite,
     logoWithName,
     prize,
   ];
