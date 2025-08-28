@@ -118,13 +118,14 @@ final class AuthRepository {
     );
     return data["data"]["status"];
   }
+
   Future<String?> signUp({
     required String email,
-
     required String password,
   }) async {
     final data = await fetchy.post(
-      "/services/platon-core/api/auth/check/otp?id=$smsId&code=$code&email=$email",
+      "/services/platon-core/api/auth/registration",
+      {"password": password, "email": email, "language": "eng"},
       log: true,
     );
     return data["data"]["status"];

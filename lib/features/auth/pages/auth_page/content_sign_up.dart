@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_invest/common/utils/validators.dart';
+import 'package:travel_invest/features/auth/notifiers/sign_up_notifier.dart';
 import 'package:travel_invest/widgets/auth_widgets/sign_in_options_widget.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
 import 'package:travel_invest/widgets/inputs/my_password_field.dart';
@@ -18,14 +19,14 @@ class ContentSignUp extends HookConsumerWidget {
   final void Function() onGoogleTap;
   final void Function() onFacebookTap;
   final void Function() onAppleTap;
-   final String email;
-
+  final String email;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
+    final signUpNotifiers = ref.watch(signUpNotifiersProvider);
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final passwordController = useTextEditingController();
     final confirmPasswordController = useTextEditingController();
@@ -72,7 +73,12 @@ class ContentSignUp extends HookConsumerWidget {
               child: MyButton(
                 onPressed: () {
                   if (formKey.currentState?.validate() ?? false) {
-                    // Handle sign-in logic here
+                    ref
+                        .read(signUpNotifiersProvider.notifier)
+                        .signUp(
+                          email: email,
+                          password: passwordController.text,
+                        );
                   }
                 },
                 text: 'Log In',

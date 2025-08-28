@@ -39,6 +39,30 @@ abstract final class Utils {
   }
 
   static String? _deviceId;
+  static String? _userAgent;
+
+  static Future<String> getUserAgent() async {
+    if (_userAgent != null) {
+      return _userAgent!;
+    }
+
+    if (Platform.isAndroid) {
+      final deviceInfo = DeviceInfoPlugin();
+      final androidInfo = await deviceInfo.androidInfo;
+      _userAgent = androidInfo.model;
+      return _userAgent!;
+    }
+
+    if (Platform.isIOS) {
+      final deviceInfo = DeviceInfoPlugin();
+      final iosInfo = await deviceInfo.iosInfo;
+      _userAgent = iosInfo.model;
+      return _userAgent!;
+    }
+
+    _userAgent = 'User-Agent';
+    return _userAgent!;
+  }
 
   static Future<String> getDeviceId() async {
     if (_deviceId != null) {

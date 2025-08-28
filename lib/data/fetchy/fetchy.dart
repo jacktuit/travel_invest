@@ -209,7 +209,10 @@ final class Fetchy {
     bool log = false,
     CancelToken? cancelToken,
   }) async {
-    final headers = <String, String>{'device-id': await Utils.getDeviceId()};
+    final headers = <String, String>{
+      'device-id': await Utils.getDeviceId(),
+      'user-agent': await Utils.getUserAgent(),
+    };
 
     try {
       final response = await dio.post(

@@ -80,7 +80,7 @@ class ContentSmsVerification extends HookConsumerWidget {
             child: Padding(
               padding: EdgeInsets.fromLTRB(24, 24, 51, 36),
               child: Text(
-                'A verification code has been sent to this email address: abduraimbek@gmail.com',
+                'A verification code has been sent to this email address: $email',
                 style: textTheme.bodySmall,
               ),
             ),
@@ -113,14 +113,13 @@ class ContentSmsVerification extends HookConsumerWidget {
               isLoading: checkEmailCodeNotifier.isLoading,
               onPressed: () {
                 if (pinValue.value.length == 4) {
-                  ref.read(authPageNotifierProvider.notifier).goToSignUp();
-                  // ref
-                  //     .read(checkEmailCodeNotifierProvider.notifier)
-                  //     .checkEmailCode(
-                  //   email: email,
-                  //   smsId: smsId,
-                  //   code: pinValue.value,
-                  // );
+                  ref
+                      .read(checkEmailCodeNotifierProvider.notifier)
+                      .checkEmailCode(
+                        email: email,
+                        smsId: smsId,
+                        code: pinValue.value,
+                      );
                 }
               },
               text: 'Verification',
