@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:logger/logger.dart';
 import 'package:travel_invest/app/router/router.dart';
 import 'package:travel_invest/app/router/routes.dart';
 import 'package:travel_invest/common/errors/unauthenticated_error.dart';
 import 'package:travel_invest/data/cache/user_cache.dart';
 import 'package:travel_invest/data/fetchy/fetchy.dart';
 
+import 'models/check_user_email_model.dart';
 import 'models/user_model.dart';
 
 final AuthRepository authRepository = AuthRepository();
@@ -83,5 +85,37 @@ final class AuthRepository {
 
     _isLoggedIn = true;
     _authStatusController.add(_isLoggedIn);
+  }
+
+  Future<CheckUserEmailResponse?> checkEmail({required String email}) async {
+    final data = await fetchy.get(
+      "/services/platon-core/api/auth/check/email?email=$email",
+      log: false,
+    );
+
+    if (data['data'] == false) {
+      final smsId = await fetchy.post(
+        "/services/platon-core/api/auth/send-code",
+        log: true,
+        {"email": email},
+      );
+
+      return CheckUserEmailResponse(email: false, id: smsId['data']['id']);
+    } else if (data['data'] == true) {
+      return CheckUserEmailResponse(email: true, id: null);
+    }
+    return null;
+  }
+
+  Future<String?> checkEmailCode({
+    required String email,
+    required int smsId,
+    required String code,
+  }) async {
+    final data = await fetchy.get(
+      "/services/platon-core/api/auth/check/otp?id=$smsId&code=$code&email=$email",
+      log: true,
+    );
+    return data["data"]["status"];
   }
 }

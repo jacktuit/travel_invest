@@ -10,7 +10,14 @@ import 'package:travel_invest/widgets/buttons/my_button.dart';
 import '../../notifiers/auth_notifiers.dart';
 
 class ContentSmsVerification extends HookConsumerWidget {
-  const ContentSmsVerification({super.key});
+  final int smsId;
+  final String email;
+
+  const ContentSmsVerification({
+    super.key,
+    required this.smsId,
+    required this.email,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

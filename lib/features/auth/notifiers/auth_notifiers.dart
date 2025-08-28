@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_notifiers.freezed.dart';
+
 part 'auth_notifiers.g.dart';
 
 @freezed

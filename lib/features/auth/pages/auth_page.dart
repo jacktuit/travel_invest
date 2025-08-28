@@ -32,6 +32,8 @@ class AuthPage extends StatefulHookConsumerWidget {
 class _AuthPageState extends ConsumerState<AuthPage> {
   final _logger = Logger();
   final _signIn = GoogleSignIn.instance;
+  String? email;
+  int? smsId;
 
   StreamSubscription<GoogleSignInAuthenticationEvent>?
   _googleSignInEventsSubscription;
@@ -202,13 +204,20 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                       onGoogleTap: onGoogleTap,
                       onFacebookTap: onFacebookTap,
                       onAppleTap: onAppleTap,
+                      onSms: (email, smsId) {
+                        this.email = email;
+                        this.smsId = smsId;
+                        setState(() {});
+                      },
                     ),
                     password: () => ContentPassword(
                       onGoogleTap: onGoogleTap,
                       onFacebookTap: onFacebookTap,
                       onAppleTap: onAppleTap,
                     ),
-                    smsVerification: () => const ContentSmsVerification(),
+                    smsVerification: () => (smsId != null && email != null)
+                        ? ContentSmsVerification(smsId: smsId!, email: email!)
+                        : Container(),
                     signUp: () => ContentSignUp(
                       onGoogleTap: onGoogleTap,
                       onFacebookTap: onFacebookTap,

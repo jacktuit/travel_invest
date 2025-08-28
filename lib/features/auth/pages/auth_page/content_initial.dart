@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:travel_invest/common/utils/validators.dart';
 import 'package:travel_invest/widgets/auth_widgets/sign_in_options_widget.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
 import 'package:travel_invest/widgets/inputs/my_text_field.dart';
 
 import '../../notifiers/auth_notifiers.dart';
+import '../../notifiers/check_email_notifier.dart';
 
 class ContentInitial extends HookConsumerWidget {
   const ContentInitial({
@@ -14,11 +16,13 @@ class ContentInitial extends HookConsumerWidget {
     required this.onGoogleTap,
     required this.onFacebookTap,
     required this.onAppleTap,
+    required this.onSms,
   });
 
   final void Function() onGoogleTap;
   final void Function() onFacebookTap;
   final void Function() onAppleTap;
+  final void Function(String email, int smsId) onSms;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,6 +31,22 @@ class ContentInitial extends HookConsumerWidget {
 
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final emailController = useTextEditingController();
+    final checkEmailNotifier = ref.watch(checkEmailNotifierProvider);
+    ref.listen(checkEmailNotifierProvider, (previous, next) {
+      next.when(
+        data: (data) {
+          if (data?.email == true) {
+            ref.read(authPageNotifierProvider.notifier).goToPassword();
+          }
+          if (data?.email == false && data?.id != null) {
+            onSms(emailController.text, data!.id!);
+            ref.read(authPageNotifierProvider.notifier).goToSmsVerification();
+          }
+        },
+        error: (error, stackTrace) {},
+        loading: () {},
+      );
+    });
 
     return SingleChildScrollView(
       child: Form(
@@ -57,10 +77,13 @@ class ContentInitial extends HookConsumerWidget {
               child: MyButton(
                 onPressed: () {
                   if (formKey.currentState?.validate() ?? false) {
-                    ref.read(authPageNotifierProvider.notifier).goToPassword();
+                    ref
+                        .read(checkEmailNotifierProvider.notifier)
+                        .checkEmail(email: emailController.text);
                   }
                 },
                 text: 'Log In',
+                isLoading: checkEmailNotifier.isLoading,
               ),
             ),
             SignInOptionsWidget(
