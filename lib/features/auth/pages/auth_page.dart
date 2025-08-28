@@ -218,11 +218,14 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                     smsVerification: () => (smsId != null && email != null)
                         ? ContentSmsVerification(smsId: smsId!, email: email!)
                         : Container(),
-                    signUp: () => ContentSignUp(
-                      onGoogleTap: onGoogleTap,
-                      onFacebookTap: onFacebookTap,
-                      onAppleTap: onAppleTap,
-                    ),
+                    signUp: () => (email != null)
+                        ? ContentSignUp(
+                            onGoogleTap: onGoogleTap,
+                            onFacebookTap: onFacebookTap,
+                            onAppleTap: onAppleTap,
+                            email: email!,
+                          )
+                        : Container(),
                   ),
                 ),
               ),

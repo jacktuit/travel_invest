@@ -12,11 +12,14 @@ class ContentSignUp extends HookConsumerWidget {
     required this.onGoogleTap,
     required this.onFacebookTap,
     required this.onAppleTap,
+    required this.email,
   });
 
   final void Function() onGoogleTap;
   final void Function() onFacebookTap;
   final void Function() onAppleTap;
+   final String email;
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

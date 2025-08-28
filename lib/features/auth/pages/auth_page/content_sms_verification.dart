@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pinput/pinput.dart';
 import 'package:travel_invest/common/utils/utils.dart';
+import 'package:travel_invest/features/auth/notifiers/check_email_code_notifier.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
 
 import '../../notifiers/auth_notifiers.dart';
@@ -21,6 +22,18 @@ class ContentSmsVerification extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final checkEmailCodeNotifier = ref.watch(checkEmailCodeNotifierProvider);
+    ref.listen(checkEmailCodeNotifierProvider, (previous, next) {
+      next.when(
+        data: (data) {
+          if (data == 'success') {
+            ref.read(authPageNotifierProvider.notifier).goToSignUp();
+          }
+        },
+        error: (error, stackTrace) {},
+        loading: () {},
+      );
+    });
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
@@ -97,9 +110,17 @@ class ContentSmsVerification extends HookConsumerWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24),
             child: MyButton(
+              isLoading: checkEmailCodeNotifier.isLoading,
               onPressed: () {
                 if (pinValue.value.length == 4) {
                   ref.read(authPageNotifierProvider.notifier).goToSignUp();
+                  // ref
+                  //     .read(checkEmailCodeNotifierProvider.notifier)
+                  //     .checkEmailCode(
+                  //   email: email,
+                  //   smsId: smsId,
+                  //   code: pinValue.value,
+                  // );
                 }
               },
               text: 'Verification',

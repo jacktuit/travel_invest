@@ -2,10 +2,10 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../data/repositories/auth/auth_repository.dart';
 import '../../../data/repositories/auth/models/check_user_email_model.dart';
 
-part 'check_email_code_notifier.g.dart';
+part 'sign_up_notifier.g.dart';
 
 @riverpod
-class CheckEmailCodeNotifier extends _$CheckEmailCodeNotifier {
+class SignUpNotifiers extends _$SignUpNotifiers {
   @override
   FutureOr<String?> build() async {
     return null;
@@ -13,8 +13,7 @@ class CheckEmailCodeNotifier extends _$CheckEmailCodeNotifier {
 
   Future<void> checkEmailCode({
     required String email,
-    required int smsId,
-    required String code,
+    required String password,
   }) async {
     if (state.isLoading) return;
 
