@@ -1,23 +1,27 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pinput/pinput.dart';
+import 'package:travel_invest/app/router/routes.dart';
 import 'package:travel_invest/common/utils/utils.dart';
 import 'package:travel_invest/features/auth/pages/email_otp_check/notifiers/check_email_otp_notifier.dart';
+import 'package:travel_invest/features/auth/pages/sign_up/page/sign_up_page.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
+import '../../auth_page/build_head_email_otp_check.dart';
 
-import '../../notifiers/auth_notifiers.dart';
-
-class ContentSmsVerification extends HookConsumerWidget {
-  final int smsId;
+final class EmailOtpCheckPageExtra {
   final String email;
+  final int otpID;
 
-  const ContentSmsVerification({
-    super.key,
-    required this.smsId,
-    required this.email,
-  });
+  EmailOtpCheckPageExtra({required this.email, required this.otpID});
+}
+
+class EmailOtpCheckPage extends HookConsumerWidget {
+  final EmailOtpCheckPageExtra extra;
+
+  const EmailOtpCheckPage({super.key, required this.extra});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,7 +30,10 @@ class ContentSmsVerification extends HookConsumerWidget {
       next.when(
         data: (data) {
           if (data == 'success') {
-            ref.read(authPageNotifierProvider.notifier).goToSignUp();
+            context.push(
+              AppRoutes.signUpPage,
+              extra: SignUpPageExtra(email: extra.email),
+            );
           }
         },
         error: (error, stackTrace) {},
@@ -69,17 +76,19 @@ class ContentSmsVerification extends HookConsumerWidget {
       ),
     );
 
-    return SingleChildScrollView(
-      child: Column(
+    return Scaffold(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
+          const BuildHeadEmail(title: "Enter the verification code"),
+
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: EdgeInsets.fromLTRB(24, 24, 51, 36),
               child: Text(
-                'A verification code has been sent to this email address: $email',
+                'A verification code has been sent to this email address: ${extra.email}',
                 style: textTheme.bodySmall,
               ),
             ),
@@ -94,6 +103,15 @@ class ContentSmsVerification extends HookConsumerWidget {
               autofillHints: null,
               onCompleted: (value) {
                 pinValue.value = value;
+                if (value.length == 4) {
+                  ref
+                      .read(checkEmailOtpNotifierProvider.notifier)
+                      .checkEmailCode(
+                        email: extra.email,
+                        smsId: extra.otpID,
+                        code: pinValue.value,
+                      );
+                }
               },
               defaultPinTheme: defaultPinTheme,
               focusedPinTheme: focused,
@@ -115,8 +133,8 @@ class ContentSmsVerification extends HookConsumerWidget {
                   ref
                       .read(checkEmailOtpNotifierProvider.notifier)
                       .checkEmailCode(
-                        email: email,
-                        smsId: smsId,
+                        email: extra.email,
+                        smsId: extra.otpID,
                         code: pinValue.value,
                       );
                 }

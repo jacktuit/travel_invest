@@ -30,7 +30,7 @@ final class AuthRepository {
     await userCache.clear();
     _isLoggedIn = false;
     _authStatusController.add(_isLoggedIn);
-    router.go(AppRoutes.auth);
+    router.go(AppRoutes.initialAuthLogin);
   }
 
   Future<void> refreshToken() async {
@@ -90,7 +90,7 @@ final class AuthRepository {
   Future<CheckUserEmailResponse?> checkEmail({required String email}) async {
     final data = await fetchy.get(
       "/services/platon-core/api/auth/check/email?email=$email",
-      log: false,
+      log: true,
     );
 
     if (data['data'] == false) {
@@ -128,6 +128,6 @@ final class AuthRepository {
       {"password": password, "email": email, "language": "eng"},
       log: true,
     );
-    return data["data"]["status"];
+    return data["data"]["access_token"];
   }
 }

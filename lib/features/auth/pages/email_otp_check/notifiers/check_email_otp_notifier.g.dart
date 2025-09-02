@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'check_email_code_notifier.dart';
+part of 'check_email_otp_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$checkEmailCodeNotifierHash() =>
-    r'd0ea6fc925498bff22cc8a5819338f1bf40dd844';
+String _$checkEmailOtpNotifierHash() =>
+    r'c6f21eb2db127506765c3e25ac81d7ff69cd1c9c';
 
-/// See also [CheckEmailCodeNotifier].
-@ProviderFor(CheckEmailCodeNotifier)
-final checkEmailCodeNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<CheckEmailCodeNotifier, String?>.internal(
-      CheckEmailCodeNotifier.new,
-      name: r'checkEmailCodeNotifierProvider',
+/// See also [CheckEmailOtpNotifier].
+@ProviderFor(CheckEmailOtpNotifier)
+final checkEmailOtpNotifierProvider =
+    AutoDisposeAsyncNotifierProvider<CheckEmailOtpNotifier, String?>.internal(
+      CheckEmailOtpNotifier.new,
+      name: r'checkEmailOtpNotifierProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
-          : _$checkEmailCodeNotifierHash,
+          : _$checkEmailOtpNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$CheckEmailCodeNotifier = AutoDisposeAsyncNotifier<String?>;
+typedef _$CheckEmailOtpNotifier = AutoDisposeAsyncNotifier<String?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../data/repositories/auth/auth_repository.dart';
-import '../../../data/repositories/auth/models/check_user_email_model.dart';
+
+import '../../../../../data/repositories/auth/auth_repository.dart';
+import '../../../../../data/repositories/auth/models/check_user_email_model.dart';
 
 part 'check_email_notifier.g.dart';
 
@@ -21,5 +22,8 @@ class CheckEmailNotifier extends _$CheckEmailNotifier {
 
       return data;
     });
+  }
+  void reset() {
+    state = const AsyncValue.data(null);
   }
 }

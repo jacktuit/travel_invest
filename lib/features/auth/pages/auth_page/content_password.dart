@@ -78,11 +78,7 @@ class ContentPassword extends HookConsumerWidget {
                 text: 'Log In',
               ),
             ),
-            SignInOptionsWidget(
-              onGoogleTap: onGoogleTap,
-              onFacebookTap: onFacebookTap,
-              onAppleTap: onAppleTap,
-            ),
+
             SizedBox(height: 16),
           ],
         ),

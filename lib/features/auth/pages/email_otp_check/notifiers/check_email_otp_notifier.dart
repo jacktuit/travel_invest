@@ -1,11 +1,12 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../data/repositories/auth/auth_repository.dart';
-import '../../../data/repositories/auth/models/check_user_email_model.dart';
 
-part 'check_email_code_notifier.g.dart';
+import '../../../../../data/repositories/auth/auth_repository.dart';
+
+
+part 'check_email_otp_notifier.g.dart';
 
 @riverpod
-class CheckEmailCodeNotifier extends _$CheckEmailCodeNotifier {
+class CheckEmailOtpNotifier extends _$CheckEmailOtpNotifier {
   @override
   FutureOr<String?> build() async {
     return null;

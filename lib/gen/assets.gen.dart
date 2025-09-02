@@ -14,6 +14,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/Stars.png
+  AssetGenImage get stars => const AssetGenImage('assets/png/Stars.png');
+
   /// File path: assets/png/apple.png
   AssetGenImage get apple => const AssetGenImage('assets/png/apple.png');
 
@@ -58,6 +61,7 @@ class $AssetsPngGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    stars,
     apple,
     applogo,
     authImage,
