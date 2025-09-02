@@ -61,13 +61,13 @@ final class AuthRepository {
     );
   }
 
-  Future<void> login({
-    required String username,
+  Future<String> login({
+    required String email,
     required String password,
   }) async {
     final response = await fetchy.dio.post(
-      '/auth/login',
-      data: {'username': username, 'password': password},
+      '/services/platon-core/api/auth/login',
+      data: {'email': email, 'password': password},
     );
 
     if (response.data?['status'] == 401 || response.statusCode == 401) {
@@ -82,9 +82,9 @@ final class AuthRepository {
       refreshToken: refreshToken,
       user: UserModel.empty(),
     );
-
     _isLoggedIn = true;
     _authStatusController.add(_isLoggedIn);
+    return token;
   }
 
   Future<CheckUserEmailResponse?> checkEmail({required String email}) async {
