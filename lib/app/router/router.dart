@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:travel_invest/features/auth/pages/login_page/page/login_page.dart';
 
 import '../../features/about_us/pages/about_us_page.dart';
 import '../../features/auth/pages/auth_page.dart';
@@ -53,6 +54,12 @@ final router = GoRouter(
       path: AppRoutes.emailOtpCheckPage,
       builder: (context, state) {
         return EmailOtpCheckPage(extra: state.extra as EmailOtpCheckPageExtra);
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.loginPage,
+      builder: (context, state) {
+        return LoginPage(extra: state.extra as LoginPageExtra);
       },
     ),
     GoRoute(

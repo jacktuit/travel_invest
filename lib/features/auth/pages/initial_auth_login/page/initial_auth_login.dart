@@ -11,6 +11,7 @@ import '../../../../../common/helpers/alert_helper.dart';
 import '../../../../../widgets/inputs/my_password_field.dart';
 import '../../auth_page/build_head.dart';
 import '../../email_otp_check/page/email_otp_check.dart';
+import '../../login_page/page/login_page.dart';
 import '../notirfiers/check_email_notifier.dart';
 
 class InitialAuthLogin extends HookConsumerWidget {
@@ -28,7 +29,15 @@ class InitialAuthLogin extends HookConsumerWidget {
     ref.listen(checkEmailNotifierProvider, (previous, next) {
       next.when(
         data: (data) {
-          if (data?.email == true) {}
+          if (data?.email == true) {
+            context.push(
+              AppRoutes.loginPage,
+              extra: LoginPageExtra(
+                email: emailController.text,
+
+              ),
+            );
+          }
           if (data?.email == false && data?.id != null) {
             context.push(
               AppRoutes.emailOtpCheckPage,
