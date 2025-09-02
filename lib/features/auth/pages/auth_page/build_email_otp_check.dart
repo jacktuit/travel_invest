@@ -6,10 +6,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pinput/pinput.dart';
 import 'package:travel_invest/app/router/routes.dart';
 import 'package:travel_invest/common/utils/utils.dart';
-import 'package:travel_invest/features/auth/pages/email_otp_check/notifiers/check_email_otp_notifier.dart';
-import 'package:travel_invest/features/auth/pages/sign_up/page/sign_up_page.dart';
+import 'package:travel_invest/features/auth/notifiers/check_email_otp_notifier.dart';
+import 'package:travel_invest/features/auth/pages/auth_page/build_sign_up_page.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
-import '../../auth_page/build_head_email_otp_check.dart';
+import 'build_head_email_otp_check.dart';
 
 final class EmailOtpCheckPageExtra {
   final String email;

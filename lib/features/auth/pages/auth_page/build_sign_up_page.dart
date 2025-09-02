@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../../../app/router/routes.dart';
-import '../../../../../common/utils/validators.dart';
-import '../../../../../widgets/buttons/my_button.dart';
-import '../../../../../widgets/inputs/my_password_field.dart';
-import '../../../notifiers/sign_up_notifier.dart';
-import '../../auth_page/build_head_email_otp_check.dart';
+import '../../../../app/router/routes.dart';
+import '../../../../common/utils/validators.dart';
+import '../../../../widgets/buttons/my_button.dart';
+import '../../../../widgets/inputs/my_password_field.dart';
+import '../../notifiers/sign_up_notifier.dart';
+import 'build_head_email_otp_check.dart';
 
 final class SignUpPageExtra {
   final String email;

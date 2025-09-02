@@ -3,9 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_invest/common/extensions/number_extensions.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
-import '../../../../../common/utils/validators.dart';
-import '../../../../../widgets/inputs/my_password_field.dart';
-import '../../auth_page/build_head_email_otp_check.dart';
+import '../../../../common/utils/validators.dart';
+import '../../../../widgets/inputs/my_password_field.dart';
+import 'build_head_email_otp_check.dart';
 
 final class LoginPageExtra {
   final String email;

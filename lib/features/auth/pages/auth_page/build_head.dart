@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_invest/gen/assets.gen.dart';
 
-import '../../notifiers/auth_notifiers.dart';
-
 class BuildHead extends StatelessWidget {
   const BuildHead({super.key});
 
@@ -38,26 +36,13 @@ class _AuthHeaderText extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(authPageNotifierProvider);
-
-    return AnimatedSwitcher(
-      duration: Duration(milliseconds: AuthPageState.animationDuration),
-      transitionBuilder: (child, animation) {
-        return SizeTransition(
-          axis: Axis.horizontal,
-          sizeFactor: animation,
-          child: child,
-        );
-      },
-      child: Text(
-        key: ValueKey(state.$2.headerText),
-        state.$2.headerText,
-        style: TextStyle(
-          color: Color(0xffEEEEEE),
-          fontSize: 32,
-          fontWeight: FontWeight.w700,
-          height: 1.3,
-        ),
+    return Text(
+      'Sign in to your Account',
+      style: TextStyle(
+        color: Color(0xffEEEEEE),
+        fontSize: 32,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
       ),
     );
   }

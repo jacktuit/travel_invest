@@ -7,12 +7,12 @@ import 'package:travel_invest/common/utils/validators.dart';
 import 'package:travel_invest/widgets/auth_widgets/sign_in_options_widget.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
 import 'package:travel_invest/widgets/inputs/my_text_field.dart';
-import '../../../../../common/helpers/alert_helper.dart';
-import '../../../../../widgets/inputs/my_password_field.dart';
-import '../../auth_page/build_head.dart';
-import '../../email_otp_check/page/email_otp_check.dart';
-import '../../login_page/page/login_page.dart';
-import '../notirfiers/check_email_notifier.dart';
+import '../../../common/helpers/alert_helper.dart';
+import '../../../widgets/inputs/my_password_field.dart';
+import 'auth_page/build_head.dart';
+import 'auth_page/build_email_otp_check.dart';
+import 'auth_page/build_login_page.dart';
+import '../notifiers/check_email_notifier.dart';
 
 class InitialAuthLogin extends HookConsumerWidget {
   const InitialAuthLogin({super.key});
@@ -32,10 +32,7 @@ class InitialAuthLogin extends HookConsumerWidget {
           if (data?.email == true) {
             context.push(
               AppRoutes.loginPage,
-              extra: LoginPageExtra(
-                email: emailController.text,
-
-              ),
+              extra: LoginPageExtra(email: emailController.text),
             );
           }
           if (data?.email == false && data?.id != null) {

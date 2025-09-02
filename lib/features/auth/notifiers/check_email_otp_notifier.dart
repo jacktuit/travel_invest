@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../../../data/repositories/auth/auth_repository.dart';
+import '../../../data/repositories/auth/auth_repository.dart';
 
 
 part 'check_email_otp_notifier.g.dart';
