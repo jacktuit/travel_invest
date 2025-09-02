@@ -65,10 +65,10 @@ final class AuthRepository {
     required String email,
     required String password,
   }) async {
-    final response = await fetchy.dio.post(
-      '/services/platon-core/api/auth/login',
-      data: {'email': email, 'password': password},
-    );
+    final response = await fetchy.post('/services/platon-core/api/auth/login', {
+      'email': email,
+      'password': password,
+    }, log: true);
 
     if (response.data?['status'] == 401 || response.statusCode == 401) {
       throw "Логин ёки парол хато киритилди";

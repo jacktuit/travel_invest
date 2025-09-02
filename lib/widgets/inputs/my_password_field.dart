@@ -10,12 +10,14 @@ class MyPasswordField extends HookWidget {
     this.labelText,
     this.validator,
     this.hintText,
+    this.autoFocus=false,
   });
 
   final TextEditingController? controller;
   final String? labelText;
   final String? Function(String? value)? validator;
   final String? hintText;
+  final bool? autoFocus;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class MyPasswordField extends HookWidget {
     final obscureText = useState(true);
 
     return MyTextField(
+
       controller: controller,
       labelText: labelText,
       validator: validator,

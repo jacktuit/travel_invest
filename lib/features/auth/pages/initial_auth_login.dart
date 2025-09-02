@@ -21,7 +21,7 @@ class InitialAuthLogin extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
-    final passwordController = useTextEditingController();
+
 
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final emailController = useTextEditingController();
@@ -80,18 +80,8 @@ class InitialAuthLogin extends HookConsumerWidget {
                 ),
               ),
 
-              if (checkEmailNotifier.valueOrNull?.email == true)
-                Padding(
-                  padding: EdgeInsets.fromLTRB(24, 16, 24, 0),
-                  child: MyPasswordField(
-                    controller: passwordController,
-                    labelText: 'Password',
-                    hintText: 'Enter your password',
-                    validator: (value) => Validators.validatePassword(value),
-                  ),
-                ),
               Padding(
-                padding: EdgeInsets.fromLTRB(24, 36, 24, 0),
+                padding: EdgeInsets.fromLTRB(16, 36, 24, 0),
                 child: MyButton(
                   onPressed: () {
                     if (formKey.currentState?.validate() ?? false) {

@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pinput/pinput.dart';
 import 'package:travel_invest/app/router/routes.dart';
+import 'package:travel_invest/common/helpers/alert_helper.dart';
 import 'package:travel_invest/common/utils/utils.dart';
 import 'package:travel_invest/features/auth/notifiers/check_email_otp_notifier.dart';
 import 'package:travel_invest/features/auth/pages/auth_page/build_sign_up_page.dart';
@@ -36,7 +37,9 @@ class EmailOtpCheckPage extends HookConsumerWidget {
             );
           }
         },
-        error: (error, stackTrace) {},
+        error: (error, stackTrace) {
+          AlertHelper.showSnackBar(context, error.toString());
+        },
         loading: () {},
       );
     });

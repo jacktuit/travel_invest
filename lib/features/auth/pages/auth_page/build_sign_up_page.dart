@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../app/router/routes.dart';
+import '../../../../common/helpers/alert_helper.dart';
 import '../../../../common/utils/validators.dart';
 import '../../../../widgets/buttons/my_button.dart';
 import '../../../../widgets/inputs/my_password_field.dart';
@@ -33,7 +34,9 @@ class SignUpPage extends HookConsumerWidget {
             context.go(AppRoutes.home);
           }
         },
-        error: (error, stackTrace) {},
+        error: (error, stackTrace) {
+          AlertHelper.showSnackBar(context, error.toString());
+        },
         loading: () {},
       );
     });
@@ -60,6 +63,7 @@ class SignUpPage extends HookConsumerWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(24, 37, 24, 0),
                 child: MyPasswordField(
+                  autoFocus: true,
                   controller: passwordController,
                   labelText: 'Password',
                   hintText: 'Enter your password',
@@ -83,6 +87,8 @@ class SignUpPage extends HookConsumerWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(24, 36, 24, 0),
                 child: MyButton(
+                  isDisabled: confirmPasswordController != passwordController,
+                  isLoading: signUpNotifiers.isLoading,
                   onPressed: () {
                     if (formKey.currentState?.validate() ?? false) {
                       ref

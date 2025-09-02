@@ -7,7 +7,7 @@ part of 'check_email_notifier.dart';
 // **************************************************************************
 
 String _$checkEmailNotifierHash() =>
-    r'37f08575ad7030f3d7718d5d977cd2c2e32e4116';
+    r'74b21cd617309dd9d233ced7f98506e3a80df652';
 
 /// See also [CheckEmailNotifier].
 @ProviderFor(CheckEmailNotifier)
