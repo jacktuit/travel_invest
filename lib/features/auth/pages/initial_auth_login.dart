@@ -22,7 +22,6 @@ class InitialAuthLogin extends HookConsumerWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
-
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final emailController = useTextEditingController();
     final checkEmailNotifier = ref.watch(checkEmailNotifierProvider);
