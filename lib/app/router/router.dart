@@ -1,8 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:travel_invest/features/auth/pages/auth_page/build_login_page.dart';
-
 import '../../features/about_us/pages/about_us_page.dart';
-import '../../features/auth/pages/auth_page.dart';
 import '../../features/auth/pages/auth_page/build_email_otp_check.dart';
 import '../../features/auth/pages/initial_auth_login.dart';
 import '../../features/auth/pages/auth_page/build_sign_up_page.dart';
