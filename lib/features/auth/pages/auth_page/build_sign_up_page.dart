@@ -43,68 +43,74 @@ class SignUpPage extends HookConsumerWidget {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final passwordController = useTextEditingController();
     final confirmPasswordController = useTextEditingController();
+    useListenable(passwordController);
+    useListenable(confirmPasswordController);
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Form(
-          key: formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              BuildHeadEmail(title: 'Create a new account'),
-              Padding(
-                padding: EdgeInsets.only(left: 24, right: 24, top: 24),
-                child: Text(
-                  'Create a password to set up your new account.',
-                  style: textTheme.bodySmall,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                BuildHeadEmail(title: 'Create a new account'),
+                Padding(
+                  padding: EdgeInsets.only(left: 24, right: 24, top: 24),
+                  child: Text(
+                    'Create a password to set up your new account.',
+                    style: textTheme.bodySmall,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(24, 37, 24, 0),
-                child: MyPasswordField(
-                  autoFocus: true,
-                  controller: passwordController,
-                  labelText: 'Password',
-                  hintText: 'Enter your password',
-                  validator: (value) => Validators.validatePassword(value),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(24, 17, 24, 0),
-                child: MyPasswordField(
-                  controller: confirmPasswordController,
-                  labelText: 'Confirm Password',
-                  hintText: 'Re-enter your password',
-                  validator: (value) {
-                    if (value != passwordController.text) {
-                      return 'Passwords do not match';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(24, 36, 24, 0),
-                child: MyButton(
-                  isDisabled: confirmPasswordController != passwordController,
-                  isLoading: signUpNotifiers.isLoading,
-                  onPressed: () {
-                    if (formKey.currentState?.validate() ?? false) {
-                      ref
-                          .read(signUpNotifiersProvider.notifier)
-                          .signUp(
-                            email: extra.email,
-                            password: passwordController.text,
-                          );
-                    }
-                  },
-                  text: 'Log In',
-                ),
-              ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(24, 37, 24, 0),
+                  child: MyPasswordField(
+                    autoFocus: true,
+                    controller: passwordController,
+                    labelText: 'Password',
+                    hintText: 'Enter your password',
 
-              SizedBox(height: 16),
-            ],
+                    validator: (value) => Validators.validatePassword(value),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(24, 17, 24, 0),
+                  child: MyPasswordField(
+                    controller: confirmPasswordController,
+                    labelText: 'Confirm Password',
+                    hintText: 'Re-enter your password',
+                    validator: (value) {
+                      if (value != passwordController.text) {
+                        return 'Passwords do not match';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(24, 36, 24, 0),
+                  child: MyButton(
+
+                    isLoading: signUpNotifiers.isLoading,
+                    onPressed: () {
+                      if (formKey.currentState?.validate() ?? false) {
+                        ref
+                            .read(signUpNotifiersProvider.notifier)
+                            .signUp(
+                              email: extra.email,
+                              password: passwordController.text,
+                            );
+                      }
+                    },
+                    text: 'Log In',
+                  ),
+                ),
+
+                SizedBox(height: 16),
+              ],
+            ),
           ),
         ),
       ),

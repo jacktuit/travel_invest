@@ -80,74 +80,76 @@ class EmailOtpCheckPage extends HookConsumerWidget {
     );
 
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const BuildHeadEmail(title: "Enter the verification code"),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const BuildHeadEmail(title: "Enter the verification code"),
 
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(24, 24, 51, 36),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(24, 24, 51, 36),
+                child: Text(
+                  'A verification code has been sent to this email address: ${extra.email}',
+                  style: textTheme.bodySmall,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: Pinput(
+                length: 4,
+                autofocus: true,
+                enableIMEPersonalizedLearning: false,
+                enableSuggestions: false,
+                autofillHints: null,
+                onCompleted: (value) {
+                  pinValue.value = value;
+                  if (value.length == 4) {
+                    ref
+                        .read(checkEmailOtpNotifierProvider.notifier)
+                        .checkEmailCode(
+                          email: extra.email,
+                          smsId: extra.otpID,
+                          code: pinValue.value,
+                        );
+                  }
+                },
+                defaultPinTheme: defaultPinTheme,
+                focusedPinTheme: focused,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 24, bottom: 36),
               child: Text(
-                'A verification code has been sent to this email address: ${extra.email}',
+                'Resend (${Utils.beautifyLeftSeconds(leftSeconds.value)})',
                 style: textTheme.bodySmall,
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
-            child: Pinput(
-              length: 4,
-              autofocus: true,
-              enableIMEPersonalizedLearning: false,
-              enableSuggestions: false,
-              autofillHints: null,
-              onCompleted: (value) {
-                pinValue.value = value;
-                if (value.length == 4) {
-                  ref
-                      .read(checkEmailOtpNotifierProvider.notifier)
-                      .checkEmailCode(
-                        email: extra.email,
-                        smsId: extra.otpID,
-                        code: pinValue.value,
-                      );
-                }
-              },
-              defaultPinTheme: defaultPinTheme,
-              focusedPinTheme: focused,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: MyButton(
+                isLoading: checkEmailCodeNotifier.isLoading,
+                onPressed: () {
+                  if (pinValue.value.length == 4) {
+                    ref
+                        .read(checkEmailOtpNotifierProvider.notifier)
+                        .checkEmailCode(
+                          email: extra.email,
+                          smsId: extra.otpID,
+                          code: pinValue.value,
+                        );
+                  }
+                },
+                text: 'Verification',
+                isDisabled: pinValue.value.length != 4,
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 24, bottom: 36),
-            child: Text(
-              'Resend (${Utils.beautifyLeftSeconds(leftSeconds.value)})',
-              style: textTheme.bodySmall,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
-            child: MyButton(
-              isLoading: checkEmailCodeNotifier.isLoading,
-              onPressed: () {
-                if (pinValue.value.length == 4) {
-                  ref
-                      .read(checkEmailOtpNotifierProvider.notifier)
-                      .checkEmailCode(
-                        email: extra.email,
-                        smsId: extra.otpID,
-                        code: pinValue.value,
-                      );
-                }
-              },
-              text: 'Verification',
-              isDisabled: pinValue.value.length != 4,
-            ),
-          ),
-          SizedBox(height: 16),
-        ],
+            SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }
