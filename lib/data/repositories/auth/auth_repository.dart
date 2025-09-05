@@ -70,13 +70,13 @@ final class AuthRepository {
       'password': password,
     }, log: true);
 
+
     if (response.data?['status'] == 401 || response.statusCode == 401) {
       throw "Логин ёки парол хато киритилди";
     }
 
-    final token = response.data?['token'];
-    final refreshToken = response.data?['refreshToken'];
-
+    final token = response.data?['data']?['access_token'];
+    final refreshToken = response.data?['data']?['refresh_token'];
     await userCache.saveToken(
       token: token,
       refreshToken: refreshToken,
@@ -84,6 +84,7 @@ final class AuthRepository {
     );
     _isLoggedIn = true;
     _authStatusController.add(_isLoggedIn);
+    router.go(AppRoutes.home);
     return token;
   }
 

@@ -92,7 +92,6 @@ class SignUpPage extends HookConsumerWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(24, 36, 24, 0),
                   child: MyButton(
-
                     isLoading: signUpNotifiers.isLoading,
                     onPressed: () {
                       if (formKey.currentState?.validate() ?? false) {

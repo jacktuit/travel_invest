@@ -111,7 +111,7 @@ class SignInOptionsWidgetState extends ConsumerState<SignInOptionsWidget> {
       case GoogleSignInAuthenticationEventSignIn(
         :final GoogleSignInAccount user,
       ):
-        _logger.i([user.authentication.idToken, user]);
+
         fetchy.post('/services/platon-auth/api/oauth2-validate?method=google', {
           'accessToken': user.authentication.idToken,
         }, log: true);
