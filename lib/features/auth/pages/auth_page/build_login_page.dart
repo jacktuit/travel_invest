@@ -29,6 +29,7 @@ class LoginPage extends HookConsumerWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final loginNotifiers = ref.watch(loginNotifiersProvider);
+
     ref.listen(loginNotifiersProvider, (previous, next) {
       next.when(
         data: (data) {},
@@ -50,7 +51,6 @@ class LoginPage extends HookConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const BuildHeadEmail(title: "Enter your password"),
-
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
@@ -88,7 +88,6 @@ class LoginPage extends HookConsumerWidget {
                       }
                     },
                     text: 'Login',
-
                     isLoading: loginNotifiers.isLoading,
                   ),
                 ),

@@ -13,7 +13,7 @@ class BuildHead extends StatelessWidget {
       children: [
         Image.asset(Assets.png.authImage.path),
         Positioned(
-          top: padding.top - kToolbarHeight + 24,
+          top: padding.top + 24,
           left: 24,
           child: Image.asset(Assets.png.logoWithName.path, width: 120),
         ),

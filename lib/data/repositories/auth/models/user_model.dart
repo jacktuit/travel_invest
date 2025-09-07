@@ -9,14 +9,16 @@ abstract class UserModel with _$UserModel {
 
   const factory UserModel({
     required String id,
-    required String name,
-    required String email,
+    String? username,
+    String? name,
+    String? email,
+    String? picture,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 
   factory UserModel.empty() {
-    return UserModel(id: '', name: '', email: '');
+    return UserModel(id: '');
   }
 }
