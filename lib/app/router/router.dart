@@ -9,7 +9,7 @@ import '../../features/home/pages/home_page.dart';
 import 'routes.dart';
 
 String _initialLocation() {
-  String initialLocation = AppRoutes.initialAuthLogin;
+  String initialLocation = AppRoutes.home;
 
   return initialLocation;
 }
