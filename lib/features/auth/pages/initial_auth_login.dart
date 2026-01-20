@@ -25,9 +25,9 @@ class InitialAuthLogin extends HookConsumerWidget {
 
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final emailController = useTextEditingController();
-    final checkEmailNotifier = ref.watch(checkEmailNotifierProvider);
+    final checkEmailNotifier = ref.watch(checkEmailProvider);
 
-    ref.listen(checkEmailNotifierProvider, (previous, next) {
+    ref.listen(checkEmailProvider, (previous, next) {
       next.when(
         data: (data) {
           if (data?.email == true) {
@@ -97,7 +97,7 @@ class InitialAuthLogin extends HookConsumerWidget {
                   onPressed: () {
                     if (formKey.currentState?.validate() ?? false) {
                       ref
-                          .read(checkEmailNotifierProvider.notifier)
+                          .read(checkEmailProvider.notifier)
                           .checkEmail(email: emailController.text);
                     }
                   },

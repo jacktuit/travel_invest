@@ -26,8 +26,8 @@ class EmailOtpCheckPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final checkEmailCodeNotifier = ref.watch(checkEmailOtpNotifierProvider);
-    ref.listen(checkEmailOtpNotifierProvider, (previous, next) {
+    final checkEmailCodeNotifier = ref.watch(checkEmailOtpProvider);
+    ref.listen(checkEmailOtpProvider, (previous, next) {
       next.when(
         data: (data) {
           if (data == 'success') {
@@ -109,7 +109,7 @@ class EmailOtpCheckPage extends HookConsumerWidget {
                   pinValue.value = value;
                   if (value.length == 4) {
                     ref
-                        .read(checkEmailOtpNotifierProvider.notifier)
+                        .read(checkEmailOtpProvider.notifier)
                         .checkEmailCode(
                           email: extra.email,
                           smsId: extra.otpID,
@@ -135,7 +135,7 @@ class EmailOtpCheckPage extends HookConsumerWidget {
                 onPressed: () {
                   if (pinValue.value.length == 4) {
                     ref
-                        .read(checkEmailOtpNotifierProvider.notifier)
+                        .read(checkEmailOtpProvider.notifier)
                         .checkEmailCode(
                           email: extra.email,
                           smsId: extra.otpID,

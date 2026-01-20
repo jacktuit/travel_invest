@@ -6,26 +6,60 @@ part of 'check_email_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(CheckEmailNotifier)
+final checkEmailProvider = CheckEmailNotifierProvider._();
+
+final class CheckEmailNotifierProvider
+    extends
+        $AsyncNotifierProvider<CheckEmailNotifier, CheckUserEmailResponse?> {
+  CheckEmailNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'checkEmailProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$checkEmailNotifierHash();
+
+  @$internal
+  @override
+  CheckEmailNotifier create() => CheckEmailNotifier();
+}
+
 String _$checkEmailNotifierHash() =>
     r'74b21cd617309dd9d233ced7f98506e3a80df652';
 
-/// See also [CheckEmailNotifier].
-@ProviderFor(CheckEmailNotifier)
-final checkEmailNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<
-      CheckEmailNotifier,
-      CheckUserEmailResponse?
-    >.internal(
-      CheckEmailNotifier.new,
-      name: r'checkEmailNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$checkEmailNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$CheckEmailNotifier =
-    AutoDisposeAsyncNotifier<CheckUserEmailResponse?>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$CheckEmailNotifier
+    extends $AsyncNotifier<CheckUserEmailResponse?> {
+  FutureOr<CheckUserEmailResponse?> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<CheckUserEmailResponse?>,
+              CheckUserEmailResponse?
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<CheckUserEmailResponse?>,
+                CheckUserEmailResponse?
+              >,
+              AsyncValue<CheckUserEmailResponse?>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}
