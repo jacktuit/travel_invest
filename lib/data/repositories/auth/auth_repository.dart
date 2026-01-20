@@ -116,9 +116,7 @@ final class AuthRepository {
       "/services/platon-core/api/auth/check/otp?id=$smsId&code=$code&email=$email",
       log: true,
     );
-    if (email == 'uskanovjahongir5@gmail.com') {
-      return "success";
-    }
+
     return data["data"]["status"];
   }
 

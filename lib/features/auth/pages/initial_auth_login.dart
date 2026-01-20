@@ -89,7 +89,7 @@ class InitialAuthLogin extends HookConsumerWidget {
                           .checkEmail(email: emailController.text);
                     }
                   },
-                  text: 'Log In or Register',
+                  text: 'Login',
                   isLoading: checkEmailNotifier.isLoading,
                 ),
               ),
