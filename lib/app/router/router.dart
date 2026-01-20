@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:travel_invest/data/cache/cache.dart';
 import 'package:travel_invest/features/auth/pages/auth_page/build_login_page.dart';
 import '../../features/about_us/pages/about_us_page.dart';
 import '../../features/auth/pages/auth_page/build_email_otp_check.dart';
@@ -9,7 +10,13 @@ import '../../features/home/pages/home_page.dart';
 import 'routes.dart';
 
 String _initialLocation() {
-  String initialLocation = AppRoutes.home;
+  final token = cache.getString("token");
+
+  String initialLocation = AppRoutes.initialAuthLogin;
+
+  if (token != null) {
+    initialLocation = AppRoutes.home;
+  }
 
   return initialLocation;
 }
