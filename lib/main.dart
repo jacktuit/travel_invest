@@ -24,7 +24,7 @@ void main() async {
         path: 'assets/translations',
         startLocale: Locale('uz'),
         supportedLocales: [Locale('uz')],
-        child: App(),
+        child: const App(),
       ),
     ),
   );

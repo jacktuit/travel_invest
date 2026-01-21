@@ -1,7 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../../data/repositories/auth/auth_repository.dart';
-import '../../../data/repositories/auth/models/check_user_email_model.dart';
+import 'package:travel_invest/data/repositories/auth/auth_repository.dart';
 
 part 'login_notifiers.g.dart';
 

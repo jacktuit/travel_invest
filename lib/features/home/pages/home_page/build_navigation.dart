@@ -14,7 +14,7 @@ class BuildNavigation extends HookConsumerWidget {
     final theme = Theme.of(context);
     const double iconSize = 24;
 
-    final currentIndex = ref.watch(navigationNotifierProvider);
+    final currentIndex = ref.watch(navigationProvider);
 
     return SafeArea(
       child: Padding(
@@ -49,7 +49,7 @@ class BuildNavigation extends HookConsumerWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               onTap: (index) {
-                ref.read(navigationNotifierProvider.notifier).change(index);
+                ref.read(navigationProvider.notifier).change(index);
               },
               items: [
                 SalomonBottomBarItem(

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:logger/logger.dart';
 import 'package:travel_invest/app/router/router.dart';
 import 'package:travel_invest/app/router/routes.dart';
 import 'package:travel_invest/common/errors/unauthenticated_error.dart';
@@ -54,11 +53,7 @@ final class AuthRepository {
     final token = response.data?['token'];
     final newRefreshToken = response.data?['refreshToken'];
 
-    await userCache.saveToken(
-      token: token,
-      refreshToken: newRefreshToken,
-      user: UserModel.empty(),
-    );
+    await userCache.saveToken(token: token, refreshToken: newRefreshToken);
   }
 
   Future<String> login({
@@ -76,11 +71,7 @@ final class AuthRepository {
 
     final token = response.data?['data']?['access_token'];
     final refreshToken = response.data?['data']?['refresh_token'];
-    await userCache.saveToken(
-      token: token,
-      refreshToken: refreshToken,
-      user: UserModel.empty(),
-    );
+    await userCache.saveToken(token: token, refreshToken: refreshToken);
     _isLoggedIn = true;
     _authStatusController.add(_isLoggedIn);
     router.go(AppRoutes.home);
@@ -130,5 +121,53 @@ final class AuthRepository {
       log: true,
     );
     return data["data"]["access_token"];
+  }
+
+  Future<void> signInWithApple({required String code}) async {
+    final data = await fetchy.post(
+      '/services/platon-auth/api/oauth2-validate?method=apple',
+      {'code': code},
+      log: false,
+    );
+
+    final token = data['auth']?['access_token'];
+    final refreshToken = data['auth']?['refresh_token'];
+
+    final user = UserModel(
+      id: data['user']?['id'],
+      username: data['user']?['username'],
+      email: data['user']?['attributes']?['email'],
+    );
+
+    await userCache.saveToken(token: token, refreshToken: refreshToken);
+
+    _isLoggedIn = true;
+    _authStatusController.add(_isLoggedIn);
+    router.go(AppRoutes.home);
+  }
+
+  Future<void> signInWithGoogle({required String token}) async {
+    final path = '/services/platon-auth/api/oauth2?method=google';
+    final pathValidate =
+        '/services/platon-auth/api/oauth2-validate?method=google';
+
+    final data = await fetchy.post(path, {'accessToken': token}, log: false);
+
+    final validateData = await fetchy.post(pathValidate, {
+      'accessToken': token,
+    }, log: false);
+
+    final accessToken = data['data']?['access_token'];
+    final refreshToken = data['data']?['refresh_token'];
+
+    final name = validateData['profile']?['name'];
+    final email = validateData['profile']?['email'];
+    final picture = validateData['profile']?['picture'];
+
+    await userCache.saveToken(token: accessToken, refreshToken: refreshToken);
+
+    _isLoggedIn = true;
+    _authStatusController.add(_isLoggedIn);
+    router.go(AppRoutes.home);
   }
 }

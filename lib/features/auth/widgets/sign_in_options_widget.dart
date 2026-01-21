@@ -1,16 +1,17 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
+import 'package:travel_invest/common/helpers/alert_helper.dart';
+import 'package:travel_invest/data/repositories/auth/auth_repository.dart';
 import 'package:travel_invest/gen/assets.gen.dart';
-import '../../app/router/routes.dart';
-import '../../common/helpers/alert_helper.dart';
-import '../../data/fetchy/fetchy.dart';
+
 import 'or_login_with_widget.dart';
 
 class SignInOptionsWidget extends StatefulHookConsumerWidget {
@@ -91,14 +92,14 @@ class SignInOptionsWidgetState extends ConsumerState<SignInOptionsWidget> {
         appleCredential.userIdentifier,
       ]);
 
-      fetchy.post('/services/platon-auth/api/oauth2-validate?method=apple', {
-        'code': appleCredential.authorizationCode,
-      }, log: true);
+      await authRepository.signInWithApple(
+        code: appleCredential.authorizationCode,
+      );
 
-      if (mounted) {
-        AlertHelper.showSnackBar(context, 'User signed in with Apple');
-        context.go(AppRoutes.home);
-      }
+      // if (mounted) {
+      //   AlertHelper.showSnackBar(context, 'User signed in with Apple');
+      //   context.go(AppRoutes.home);
+      // }
     } catch (error) {
       if (mounted) {
         AlertHelper.showSnackBar(context, error.toString());
@@ -111,19 +112,9 @@ class SignInOptionsWidgetState extends ConsumerState<SignInOptionsWidget> {
       case GoogleSignInAuthenticationEventSignIn(
         :final GoogleSignInAccount user,
       ):
-
-        fetchy.post('/services/platon-auth/api/oauth2-validate?method=google', {
-          'accessToken': user.authentication.idToken,
-        }, log: true);
-
-        if (mounted) {
-          AlertHelper.showSnackBar(
-            context,
-            'User signed in with Google: ${user.email}',
-          );
-          context.go(AppRoutes.home);
+        if (user.authentication.idToken != null) {
+          authRepository.signInWithGoogle(token: user.authentication.idToken!);
         }
-
         break;
 
       case GoogleSignInAuthenticationEventSignOut():
@@ -155,17 +146,11 @@ class SignInOptionsWidgetState extends ConsumerState<SignInOptionsWidget> {
                 onTap: onGoogleTap,
                 imagePath: Assets.png.google.path,
               ),
-
               if (Platform.isIOS)
                 SignInOptionWidget(
                   onTap: onAppleTap,
                   imagePath: Assets.png.apple.path,
                 ),
-
-              // SignInOptionWidget(
-              //   onTap: onFacebookTap,
-              //   imagePath: Assets.png.facebook.path,
-              // ),
             ],
           ),
         ),

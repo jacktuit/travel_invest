@@ -12,11 +12,9 @@ final class UserCache {
   Future<void> saveToken({
     required String token,
     required String refreshToken,
-    required UserModel user,
   }) async {
     await cache.setString(_tokenKey, token);
     await cache.setString(_refreshTokenKey, refreshToken);
-    await cache.setMap(_userKey, user.toJson());
   }
 
   String? get token => cache.getString(_tokenKey);

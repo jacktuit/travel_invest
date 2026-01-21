@@ -1,0 +1,20 @@
+{
+  "auth": {
+    "access_token": "eyJhbGciOiJSUzI1NiJ9.eyJ1cGRhdGVfaWQiOiIiLCJzdWIiOiJhNzI1Nzc1OC1lZWQ2LTRjNGUtOWUzZi0wZTI0OWYwNGRlMzIiLCJyb2xlcyI6IiIsImlzcyI6IiIsInR5cGUiOiJCZWFyZXIiLCJsb2NhbGUiOiJ1eiIsInNpZCI6ImM5NjE4Y2NkLWVkZjQtNGRhNC1iZTk0LTBmZTU0NGFjMjI1NCIsImF1ZCI6ImFjY291bnQiLCJmdWxsX25hbWUiOiIiLCJleHAiOjE3NTcwNzAxNDQsInNlc3Npb25fc3RhdGUiOiJTVEFURUxFU1MiLCJpYXQiOjE3NTcwNTIxNDQsImp0aSI6ImQyYzNkM2Y3LTk1NjEtNDkyMi1hMTA1LTExODU5ODg0M2Y5ZCIsInVzZXJuYW1lIjoiZGV2Lnlhcmtpbm92QGdtYWlsLmNvbSJ9.5P4mRqWtcA1w9i63WHLcDgKljfLeu1BHjqV9yimwKX6DzgemsRxVlT08sPDalMNQrvskMFsqZ4fSQzwa_fzQYtW-b09yORo19MUZX2OhpDYcHArwYJkLIVkZI10jJHii5OXvI2SXBRmgtr1JF-by7I28h6y4Ja5DQ1w0zQWEh-nNNJDia0nUmXkVb_3TnJRVXlsPDZOl3yNxsX4doySVtFYe1zuFeObx_HhBD6TUaqFnOb1M_Oo8M8umaF4E2f0T2-SxSS9hKcEy2sCgeb4viU4ZyDFRs1clq0uwU5kWrWKaw_WhTqVtuqSMjTn9AkXi9g1mARU6BfrbBFrESpJ_zQ",
+    "refresh_token": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhNzI1Nzc1OC1lZWQ2LTRjNGUtOWUzZi0wZTI0OWYwNGRlMzIiLCJhdWQiOiJhY2NvdW50IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL2dhdGV3YXkvcGxhdG9uLWF1dGgvcmVhbG1zL2RldiIsImV4cCI6MTc1NzA3MDE0NCwic2Vzc2lvbl9zdGF0ZSI6IlNUQVRFTEVTUyIsImlhdCI6MTc1NzA1MjE0NCwianRpIjoiZDJjM2QzZjctOTU2MS00OTIyLWExMDUtMTE4NTk4ODQzZjlkIiwic2lkIjoiYzk2MThjY2QtZWRmNC00ZGE0LWJlOTQtMGZlNTQ0YWMyMjU0IiwidXNlcm5hbWUiOiJkZXYueWFya2lub3ZAZ21haWwuY29tIn0.wne402PthGslirHTho-RPQY4tR239mqatZxR1gMFEtw8g2VUQUleQCTOyZydnl5AD9xbLAfLymX2ew9mwLcoWIsXCM5GnC96KGDKeZA52is7m_W7LUTuKIhCR3N0H83UTFGlzoXAB22RGzvMLO0IZ_89yJuwm_f2IfVm9Y9pNAfwrXJgBRctWY_uibokxjlBecVDwA8C3hg8WW86JuQXjqSZ8eFuyacp7yUIb0C_jccnE7_NZR8rg0Er9WuQMIcdvQCUFsLPNHZk6_iMkA9HCRyue5VIel4hzx9k9E0wDbZlQ1Ddxs_fT-zdCrpF_qf4iU0Fy57rG4R34IbonovlpQ",
+    "token_type": "Bearer",
+    "expires_in": 18000000,
+    "refresh_expires_in": 18000000
+  },
+  "user": {
+    "id": "a7257758-eed6-4c4e-9e3f-0e249f04de32",
+    "state": 1,
+    "createdAt": 1757052144707,
+    "updatedAt": 1757052144707,
+    "attributes": { "email": "dev.yarkinov@gmail.com" },
+    "username": "dev.yarkinov@gmail.com",
+    "registeredWithEimzo": false,
+    "isForceChangePassword": false,
+    "permissionsString": "'platon.user'"
+  }
+}
