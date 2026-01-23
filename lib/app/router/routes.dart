@@ -2,6 +2,7 @@ abstract final class AppRoutes {
   static const home = '/';
   // static const auth = '/auth';
   static const aboutUs = '/about_us';
+  static const facebookPage = '/facebook_page';
   static const discountCards = '/discount_cards';
   static const emailOtpCheckPage = '/email_otp_check_page';
   static const loginPage = '/login_page';

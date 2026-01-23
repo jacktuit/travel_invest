@@ -20,19 +20,39 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.googleusercontent.apps.657913602018</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.657913602018-e6l4ohplpt7bi0o3jmps07se7n9cjleg</string>
-			</array>
-		</dict>
-	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+           <key>CFBundleTypeRole</key>
+           <string>Editor</string>
+           <key>CFBundleURLName</key>
+           <string>com.googleusercontent.apps.657913602018</string>
+           <key>CFBundleURLSchemes</key>
+           <array>
+              <string>com.googleusercontent.apps.657913602018-e6l4ohplpt7bi0o3jmps07se7n9cjleg</string>
+           </array>
+        </dict>
+
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb824165813272382</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>824165813272382</string>
+    <key>FacebookClientToken</key>
+    <string>9db6daebe4809d7692c1a24dca1c4f03</string>
+    <key>FacebookDisplayName</key>
+    <string>Travel Invest</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-share-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
+    </array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>GIDClientID</key>

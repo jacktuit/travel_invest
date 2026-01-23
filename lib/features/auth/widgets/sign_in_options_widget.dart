@@ -102,6 +102,7 @@ class SignInOptionsWidgetState extends ConsumerState<SignInOptionsWidget> {
       // }
     } catch (error) {
       if (mounted) {
+        _logger.e(error);
         AlertHelper.showSnackBar(context, error.toString());
       }
     }
