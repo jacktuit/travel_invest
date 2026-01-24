@@ -47,7 +47,7 @@ class EmailOtpCheckPage extends HookConsumerWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
-    final leftSeconds = useState(20);
+    final leftSeconds = useState(60);
     final pinValue = useState('');
 
     useEffect(() {
@@ -112,7 +112,7 @@ class EmailOtpCheckPage extends HookConsumerWidget {
                   if (value.length == 4) {
                     if (extra.email == 'testtravelinvest@gmail.com') {
                       context.push(AppRoutes.home);
-                      cache.setString("token", "testTravelInvestToken");
+                      cache.setString("_tokenKey", "testTravelInvestToken");
                       return;
                     }
                     ref
@@ -143,7 +143,7 @@ class EmailOtpCheckPage extends HookConsumerWidget {
                   if (pinValue.value.length == 4) {
                     if (extra.email == 'testtravelinvest@gmail.com') {
                       context.push(AppRoutes.home);
-                      cache.setString("token", "testTravelInvestToken");
+                      cache.setString("_tokenKey", "testTravelInvestToken");
                       return;
                     }
                     ref

@@ -41,7 +41,7 @@ class MyButton extends StatelessWidget {
           gradient: isDisabled
               ? null
               : LinearGradient(
-                  colors: [Color(0xff1D61E7), Color(0xff375DFB)],
+                  colors: [Color(0xff496648), Color(0xff335432)],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -51,13 +51,13 @@ class MyButton extends StatelessWidget {
                   BoxShadow(
                     spreadRadius: 1,
                     blurRadius: 0,
-                    color: Color(0xff375DFB),
+                    color: Color(0xff496648),
                     offset: Offset(0, 0),
                   ),
                   BoxShadow(
                     spreadRadius: 0,
                     blurRadius: 2,
-                    color: Color(0xff253EA7).withValues(alpha: .48),
+                    color: Color(0xff335432).withValues(alpha: .48),
                     offset: Offset(0, 1),
                   ),
                 ],

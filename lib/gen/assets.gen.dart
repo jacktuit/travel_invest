@@ -14,6 +14,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/Head.png
+  AssetGenImage get head => const AssetGenImage('assets/png/Head.png');
+
   /// File path: assets/png/Stars.png
   AssetGenImage get stars => const AssetGenImage('assets/png/Stars.png');
 
@@ -45,12 +48,12 @@ class $AssetsPngGen {
   /// File path: assets/png/google.png
   AssetGenImage get google => const AssetGenImage('assets/png/google.png');
 
+  /// File path: assets/png/head_background.png
+  AssetGenImage get headBackground =>
+      const AssetGenImage('assets/png/head_background.png');
+
   /// File path: assets/png/logo_app.png
   AssetGenImage get logoApp => const AssetGenImage('assets/png/logo_app.png');
-
-  /// File path: assets/png/logo_white.png
-  AssetGenImage get logoWhite =>
-      const AssetGenImage('assets/png/logo_white.png');
 
   /// File path: assets/png/logo_with_name.png
   AssetGenImage get logoWithName =>
@@ -61,6 +64,7 @@ class $AssetsPngGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    head,
     stars,
     apple,
     applogo,
@@ -70,8 +74,8 @@ class $AssetsPngGen {
     cardGreen,
     facebook,
     google,
+    headBackground,
     logoApp,
-    logoWhite,
     logoWithName,
     prize,
   ];

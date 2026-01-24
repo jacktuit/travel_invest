@@ -47,13 +47,14 @@ class InitialAuthLogin extends HookConsumerWidget {
           }
         },
         error: (error, stackTrace) {
-          AlertHelper.showSnackBar(context, stackTrace.toString());
+          AlertHelper.showSnackBar(context, "Please try again in 5 minutes.");
         },
         loading: () {},
       );
     });
 
     return Scaffold(
+      backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         toolbarHeight: 0,
@@ -101,7 +102,7 @@ class InitialAuthLogin extends HookConsumerWidget {
                           .checkEmail(email: emailController.text);
                     }
                   },
-                  text: 'Login',
+                  text: 'Continue',
                   isLoading: checkEmailNotifier.isLoading,
                 ),
               ),

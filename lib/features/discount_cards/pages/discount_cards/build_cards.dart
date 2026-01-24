@@ -131,7 +131,7 @@ class _Card extends StatelessWidget {
           alignment: Alignment.bottomLeft,
           child: Padding(
             padding: EdgeInsets.only(left: 16, bottom: 16),
-            child: Image.asset(Assets.png.logoWhite.path, width: 97.13),
+            child: Image.asset(Assets.png.logoWithName.path, width: 97.13),
           ),
         ),
       ],

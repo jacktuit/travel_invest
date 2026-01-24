@@ -11,7 +11,7 @@ class BuildHead extends StatelessWidget {
 
     return Stack(
       children: [
-        Image.asset(Assets.png.authImage.path),
+        Image.asset(Assets.png.head.path),
         Positioned(
           top: padding.top + 24,
           left: 24,
