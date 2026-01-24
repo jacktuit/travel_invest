@@ -39,7 +39,7 @@ class BuildInvestCard extends StatelessWidget {
           _BuildMultiplies(),
           SizedBox(height: 16),
           _PrizeDraws(),
-          SizedBox(height: 24),
+          SizedBox(height: 8),
           MyButton(
             onPressed: () {
               context.push(AppRoutes.discountCards);
@@ -61,10 +61,10 @@ class _BuildMultiplies extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         _Container(
-          n: 2,
-          flex: 13,
-          start: Color(0xff0EA1DB),
-          end: Color(0xff12C2D1),
+          n: 10,
+          flex: 35,
+          start: Color(0xff2E6A2C),
+          end: Color(0xff2F772D),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             bottomLeft: Radius.circular(20),
@@ -74,16 +74,16 @@ class _BuildMultiplies extends StatelessWidget {
         _Container(
           n: 5,
           flex: 22,
-          start: Color(0xff12C5CF),
-          end: Color(0xff22FCB4),
+          start: Color(0xff2F782D),
+          end: Color(0xff33922F),
           borderRadius: BorderRadius.zero,
         ),
         _Divider(),
         _Container(
-          n: 10,
-          flex: 35,
-          start: Color(0xff26FCAF),
-          end: Color(0xff8FFE34),
+          n: 2,
+          flex: 13,
+          start: Color(0xff33942F),
+          end: Color(0xff17B3A6),
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(20),
             bottomRight: Radius.circular(20),
@@ -177,9 +177,10 @@ class _PrizeDraws extends StatelessWidget {
         Text(
           'Participate in',
           style: textTheme.labelSmall?.copyWith(
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.w400,
             height: 1.2,
+            color: Color(0xff1A1C1E),
           ),
         ),
         SizedBox(width: 2),
@@ -203,7 +204,7 @@ class _PrizeDraws extends StatelessWidget {
                   height: 1.2,
                 ),
               ),
-              Image.asset(Assets.png.prize.path, width: 24, height: 24),
+              Image.asset(Assets.png.prizeGreen.path, width: 24, height: 24),
             ],
           ),
         ),

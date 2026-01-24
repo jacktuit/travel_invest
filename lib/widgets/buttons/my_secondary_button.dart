@@ -17,14 +17,18 @@ class MySecondaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(color: AppColors.primary, width: 1),
+        ),
         fixedSize: Size.fromHeight(height),
         maximumSize: Size.fromHeight(height),
         minimumSize: Size.fromHeight(height),
         elevation: 0,
-        backgroundColor: Color(0xffF4F4F4),
+        backgroundColor: Color(0xffF2FFF5),
         foregroundColor: AppColors.primary,
         shadowColor: Colors.transparent,
-        surfaceTintColor: Color(0xffF4F4F4),
+        surfaceTintColor: Color(0xffF2FFF5),
         padding: EdgeInsets.zero,
         textStyle: TextStyle(
           fontSize: 14,

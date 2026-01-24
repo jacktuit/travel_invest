@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:travel_invest/common/extensions/number_extensions.dart';
 import 'package:travel_invest/widgets/buttons/my_secondary_button.dart';
 import 'package:travel_invest/widgets/cards/my_card.dart';
 
@@ -26,7 +27,7 @@ class BuildInviteCard extends StatelessWidget {
               ),
             ),
             _Percent(),
-            Spacer(),
+            8.vertical,
             _PeopleAndButton(),
           ],
         ),

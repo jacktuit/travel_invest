@@ -52,6 +52,10 @@ class $AssetsPngGen {
   AssetGenImage get headBackground =>
       const AssetGenImage('assets/png/head_background.png');
 
+  /// File path: assets/png/home_background_2.png
+  AssetGenImage get homeBackground2 =>
+      const AssetGenImage('assets/png/home_background_2.png');
+
   /// File path: assets/png/logo_app.png
   AssetGenImage get logoApp => const AssetGenImage('assets/png/logo_app.png');
 
@@ -61,6 +65,10 @@ class $AssetsPngGen {
 
   /// File path: assets/png/prize.png
   AssetGenImage get prize => const AssetGenImage('assets/png/prize.png');
+
+  /// File path: assets/png/prize_green.png
+  AssetGenImage get prizeGreen =>
+      const AssetGenImage('assets/png/prize_green.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -75,9 +83,11 @@ class $AssetsPngGen {
     facebook,
     google,
     headBackground,
+    homeBackground2,
     logoApp,
     logoWithName,
     prize,
+    prizeGreen,
   ];
 }
 
@@ -105,6 +115,12 @@ class $AssetsSvgGen {
   /// File path: assets/svg/home_outlined.svg
   String get homeOutlined => 'assets/svg/home_outlined.svg';
 
+  /// File path: assets/svg/partners.svg
+  String get partners => 'assets/svg/partners.svg';
+
+  /// File path: assets/svg/partners_active.svg
+  String get partnersActive => 'assets/svg/partners_active.svg';
+
   /// File path: assets/svg/profile_filled.svg
   String get profileFilled => 'assets/svg/profile_filled.svg';
 
@@ -120,6 +136,8 @@ class $AssetsSvgGen {
     exploreOutlined,
     homeFilled,
     homeOutlined,
+    partners,
+    partnersActive,
     profileFilled,
     profileOutlined,
   ];

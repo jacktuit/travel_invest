@@ -67,12 +67,12 @@ class BuildNavigation extends HookConsumerWidget {
                 ),
                 SalomonBottomBarItem(
                   icon: SvgPicture.asset(
-                    Assets.svg.bookmarkOutlined,
+                    Assets.svg.partners,
                     width: iconSize,
                     height: iconSize,
                   ),
                   activeIcon: SvgPicture.asset(
-                    Assets.svg.bookmarkFilled,
+                    Assets.svg.partnersActive,
                     width: iconSize,
                     height: iconSize,
                   ),
