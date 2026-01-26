@@ -11,6 +11,105 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsJpgGen {
+  const $AssetsJpgGen();
+
+  /// File path: assets/jpg/Risunok2.jpg
+  AssetGenImage get risunok2 => const AssetGenImage('assets/jpg/Risunok2.jpg');
+
+  /// File path: assets/jpg/bukhara.jpeg
+  AssetGenImage get bukhara => const AssetGenImage('assets/jpg/bukhara.jpeg');
+
+  /// File path: assets/jpg/bukharatho.jpg
+  AssetGenImage get bukharatho =>
+      const AssetGenImage('assets/jpg/bukharatho.jpg');
+
+  /// File path: assets/jpg/bukharathree.jpeg
+  AssetGenImage get bukharathree =>
+      const AssetGenImage('assets/jpg/bukharathree.jpeg');
+
+  /// File path: assets/jpg/hotel.jpg
+  AssetGenImage get hotel => const AssetGenImage('assets/jpg/hotel.jpg');
+
+  /// File path: assets/jpg/hotelthree.jpg
+  AssetGenImage get hotelthree =>
+      const AssetGenImage('assets/jpg/hotelthree.jpg');
+
+  /// File path: assets/jpg/hoteltwo.jpeg
+  AssetGenImage get hoteltwo => const AssetGenImage('assets/jpg/hoteltwo.jpeg');
+
+  /// File path: assets/jpg/khiva.jpeg
+  AssetGenImage get khiva => const AssetGenImage('assets/jpg/khiva.jpeg');
+
+  /// File path: assets/jpg/khivaone.jpg
+  AssetGenImage get khivaone => const AssetGenImage('assets/jpg/khivaone.jpg');
+
+  /// File path: assets/jpg/khivathree.jpg
+  AssetGenImage get khivathree =>
+      const AssetGenImage('assets/jpg/khivathree.jpg');
+
+  /// File path: assets/jpg/khivatwo.jpeg
+  AssetGenImage get khivatwo => const AssetGenImage('assets/jpg/khivatwo.jpeg');
+
+  /// File path: assets/jpg/lam.jpg
+  AssetGenImage get lam => const AssetGenImage('assets/jpg/lam.jpg');
+
+  /// File path: assets/jpg/lambo.jpg
+  AssetGenImage get lambo => const AssetGenImage('assets/jpg/lambo.jpg');
+
+  /// File path: assets/jpg/navruzone.jpg
+  AssetGenImage get navruzone =>
+      const AssetGenImage('assets/jpg/navruzone.jpg');
+
+  /// File path: assets/jpg/registonone.jpg
+  AssetGenImage get registonone =>
+      const AssetGenImage('assets/jpg/registonone.jpg');
+
+  /// File path: assets/jpg/registonthree.jpg
+  AssetGenImage get registonthree =>
+      const AssetGenImage('assets/jpg/registonthree.jpg');
+
+  /// File path: assets/jpg/registontwo.jpg
+  AssetGenImage get registontwo =>
+      const AssetGenImage('assets/jpg/registontwo.jpg');
+
+  /// File path: assets/jpg/restaurant.jpg
+  AssetGenImage get restaurant =>
+      const AssetGenImage('assets/jpg/restaurant.jpg');
+
+  /// File path: assets/jpg/restaurantone.jpeg
+  AssetGenImage get restaurantone =>
+      const AssetGenImage('assets/jpg/restaurantone.jpeg');
+
+  /// File path: assets/jpg/restauranttwo.jpg
+  AssetGenImage get restauranttwo =>
+      const AssetGenImage('assets/jpg/restauranttwo.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    risunok2,
+    bukhara,
+    bukharatho,
+    bukharathree,
+    hotel,
+    hotelthree,
+    hoteltwo,
+    khiva,
+    khivaone,
+    khivathree,
+    khivatwo,
+    lam,
+    lambo,
+    navruzone,
+    registonone,
+    registonthree,
+    registontwo,
+    restaurant,
+    restaurantone,
+    restauranttwo,
+  ];
+}
+
 class $AssetsPngGen {
   const $AssetsPngGen();
 
@@ -156,6 +255,7 @@ class $AssetsTranslationsGen {
 class Assets {
   const Assets._();
 
+  static const $AssetsJpgGen jpg = $AssetsJpgGen();
   static const $AssetsPngGen png = $AssetsPngGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();

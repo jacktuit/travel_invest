@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:travel_invest/app/theme/extensions.dart';
 
 class MyTextField extends StatelessWidget {
   const MyTextField({
@@ -31,6 +32,7 @@ class MyTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
+    final myColor = context.myColors;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,6 +52,8 @@ class MyTextField extends StatelessWidget {
           obscureText: obscureText ?? false,
           obscuringCharacter: '*',
           decoration: InputDecoration(
+            fillColor: Colors.white,
+            filled: true,
             suffixIcon: suffixIcon,
             hintText: hintText,
             hintStyle: textTheme.titleMedium?.copyWith(color: theme.hintColor),

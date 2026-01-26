@@ -1,8 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:travel_invest/common/extensions/number_extensions.dart';
-import '../../../../gen/assets.gen.dart';
+import '../../../gen/assets.gen.dart';
 
 class BuildWelcome extends StatelessWidget {
   const BuildWelcome({super.key});

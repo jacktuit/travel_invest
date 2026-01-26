@@ -76,7 +76,7 @@ class BuildNavigation extends HookConsumerWidget {
                     width: iconSize,
                     height: iconSize,
                   ),
-                  title: _Label(label: 'Bookmark'),
+                  title: _Label(label: 'Location'),
                 ),
                 SalomonBottomBarItem(
                   icon: SvgPicture.asset(
