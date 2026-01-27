@@ -7,7 +7,7 @@ import '../notifier/partners_notifier.dart';
 class UniversalPlacePage extends StatelessWidget {
   final PlaceCategory category;
   final String title;
-  final List<PlaceModel> places; // <-- Tayyor list keladi
+  final List<dynamic> places;
 
   const UniversalPlacePage({
     super.key,

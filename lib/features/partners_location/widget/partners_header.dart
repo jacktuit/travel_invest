@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_invest/common/extensions/number_extensions.dart';
 import 'package:travel_invest/widgets/inputs/my_text_field.dart';
-
+import '../model/partners_model.dart';
 import '../notifier/partners_notifier.dart';
 
 class PartnersHeader extends ConsumerWidget {
@@ -10,8 +10,8 @@ class PartnersHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedCat = ref.watch(placeProvider).selectedCategory;
-    final notifier = ref.read(placeProvider.notifier);
+    final filter = ref.watch(partnersFilterProvider);
+    final filterNotifier = ref.read(partnersFilterProvider.notifier);
 
     return Column(
       children: [
@@ -19,12 +19,11 @@ class PartnersHeader extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: MyTextField(
-            onChanged: notifier.updateSearchQuery,
+            onChanged: filterNotifier.updateQuery,
             hintText: 'Search for services and places',
           ),
         ),
         16.vertical,
-
         SizedBox(
           height: 75,
           child: ListView.builder(
@@ -33,12 +32,12 @@ class PartnersHeader extends ConsumerWidget {
             itemCount: PlaceCategory.values.length,
             itemBuilder: (context, index) {
               final category = PlaceCategory.values[index];
-              final isSelected = selectedCat == category;
+              final isSelected = filter.category == category;
 
               return Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: GestureDetector(
-                  onTap: () => notifier.selectCategory(category),
+                  onTap: () => filterNotifier.selectCategory(category),
                   child: Column(
                     children: [
                       AnimatedContainer(

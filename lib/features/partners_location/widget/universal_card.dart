@@ -1,13 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../model/partners_model.dart';
 import '../notifier/partners_notifier.dart';
-import 'universal_page.dart';
 
 class UniversalPlaceCard extends ConsumerStatefulWidget {
-  final PlaceModel place;
+  final dynamic place;
   final PlaceCategory category;
 
   const UniversalPlaceCard({
@@ -29,6 +27,15 @@ class _UniversalPlaceCardState extends ConsumerState<UniversalPlaceCard> {
   static const _autoScrollDuration = Duration(seconds: 4);
   static const _transitionDuration = Duration(milliseconds: 350);
 
+  String get _placeId => widget.place.id as String;
+  String get _title => widget.place.title as String;
+  String get _location => widget.place.location as String;
+  List<String> get _images => widget.place.images as List<String>;
+  String? get _discount => widget.place.discountTitle as String?;
+  bool get _isFavorite => widget.place.isFavorite as bool;
+  double get _lat => widget.place.lat as double;
+  double get _lng => widget.place.lng as double;
+
   @override
   void initState() {
     super.initState();
@@ -44,10 +51,12 @@ class _UniversalPlaceCardState extends ConsumerState<UniversalPlaceCard> {
   }
 
   void _startAutoScroll() {
+    if (_images.length <= 1) return;
+
     _autoScrollTimer = Timer.periodic(_autoScrollDuration, (_) {
       if (!mounted || !_pageController.hasClients) return;
 
-      final nextPage = (_currentPage + 1) % widget.place.imageUrls.length;
+      final nextPage = (_currentPage + 1) % _images.length;
       _pageController.animateToPage(
         nextPage,
         duration: _transitionDuration,
@@ -68,9 +77,32 @@ class _UniversalPlaceCardState extends ConsumerState<UniversalPlaceCard> {
   }
 
   void _toggleFavorite() {
-    ref
-        .read(placeProvider.notifier)
-        .toggleFavorite(widget.category, widget.place.id);
+    final notifier = ref.read(partnersProvider.notifier);
+
+    switch (widget.category) {
+      case PlaceCategory.hotel:
+        notifier.toggleHotelFavorite(_placeId);
+        break;
+      case PlaceCategory.carRental:
+        notifier.toggleCarRentalFavorite(_placeId);
+        break;
+      case PlaceCategory.restaurant:
+        notifier.toggleRestaurantFavorite(_placeId);
+        break;
+      case PlaceCategory.attraction:
+        notifier.toggleAttractionFavorite(_placeId);
+        break;
+      case PlaceCategory.event:
+        notifier.toggleEventFavorite(_placeId);
+        break;
+      case PlaceCategory.all:
+        break;
+    }
+  }
+
+  String _calculateDistance() {
+    // TODO: User location bilan hisoblash
+    return '${(_lat - 41.0).abs().toStringAsFixed(1)} km';
   }
 
   @override
@@ -81,18 +113,18 @@ class _UniversalPlaceCardState extends ConsumerState<UniversalPlaceCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _ImageCarousel(
-            imageUrls: widget.place.imageUrls,
+            imageUrls: _images,
             currentPage: _currentPage,
             pageController: _pageController,
             onPageChanged: _onPageChanged,
             onManualScroll: _resetAutoScrollTimer,
-            distance: widget.place.distance,
-            discount: widget.place.discount,
-            isFavorite: widget.place.isFavorite,
+            distance: _calculateDistance(),
+            discount: _discount,
+            isFavorite: _isFavorite,
             onFavoriteToggle: _toggleFavorite,
           ),
           const SizedBox(height: 12),
-          _PlaceInfo(name: widget.place.name, location: widget.place.location),
+          _PlaceInfo(name: _title, location: _location),
         ],
       ),
     );
@@ -134,7 +166,7 @@ class _ImageCarousel extends StatelessWidget {
             _buildGradientOverlay(),
             _buildTopBadges(),
             _buildFavoriteButton(),
-            _buildPageIndicator(),
+            if (imageUrls.length > 1) _buildPageIndicator(),
           ],
         ),
       ),
@@ -155,13 +187,27 @@ class _ImageCarousel extends StatelessWidget {
         onPageChanged: onPageChanged,
         itemCount: imageUrls.length,
         itemBuilder: (context, index) {
-          return Image.asset(
+          return Image.network(
             imageUrls[index],
             fit: BoxFit.cover,
             errorBuilder: (_, __, ___) => Container(
               color: Colors.grey[300],
               child: const Icon(Icons.broken_image, size: 48),
             ),
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) return child;
+              return Container(
+                color: Colors.grey[200],
+                child: Center(
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
@@ -227,7 +273,7 @@ class _ImageCarousel extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(
           imageUrls.length,
-          (index) => _DotIndicator(isActive: index == currentPage),
+              (index) => _DotIndicator(isActive: index == currentPage),
         ),
       ),
     );
