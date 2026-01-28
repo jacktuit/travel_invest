@@ -62,7 +62,7 @@ class _BuildVideoState extends State<BuildVideo> {
             ),
           )
         : Padding(
-            padding: EdgeInsets.fromLTRB(8, 16, 8, 0),
+            padding: EdgeInsets.fromLTRB(16, 16, 16, 24),
             child: AspectRatio(
               aspectRatio: 16 / 9,
               child: Container(

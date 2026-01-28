@@ -5,6 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_invest/features/home/notifiers/navigation_notifier.dart';
 import 'package:travel_invest/gen/assets.gen.dart';
 
+import '../../make_partner/page/build_business_type.dart';
+import '../../news_notifications/page/news_notifications_page.dart';
 import '../../partners_location/page/partners_page.dart';
 import '../../travel_home/page/travel_home_page.dart';
 import 'home_page/build_navigation.dart';
@@ -14,7 +16,6 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final index = ref.watch(navigationProvider);
 
     return PopScope(
@@ -31,8 +32,8 @@ class HomePage extends ConsumerWidget {
           children: [
             TravelHomePage(),
             PartnersPage(),
-            Container(),
-            Container(),
+            NewsNotificationsPage(),
+            BuildBusinessType(),
           ],
         ),
         bottomNavigationBar: BuildNavigation(),

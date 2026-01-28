@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
@@ -37,6 +38,7 @@ abstract final class Utils {
   static String generateUuid() {
     return _uuid.v4();
   }
+  static Future<void> vibrate() => HapticFeedback.lightImpact();
 
   static String? _deviceId;
   static String? _userAgent;

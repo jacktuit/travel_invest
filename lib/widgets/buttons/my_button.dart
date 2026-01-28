@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../common/utils/utils.dart';
+
 class MyButton extends StatelessWidget {
   const MyButton({
     super.key,
@@ -66,6 +68,8 @@ class MyButton extends StatelessWidget {
           onPressed: isDisabled
               ? null
               : () {
+                  Utils.vibrate();
+
                   onPressed();
                 },
           style: ElevatedButton.styleFrom(

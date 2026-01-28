@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:travel_invest/common/extensions/number_extensions.dart';
 import 'package:travel_invest/widgets/buttons/my_secondary_button.dart';
 import 'package:travel_invest/widgets/cards/my_card.dart';
+
+import '../../../app/router/routes.dart';
 
 class BuildInviteCard extends StatelessWidget {
   const BuildInviteCard({super.key});
@@ -99,7 +102,12 @@ class _PeopleAndButton extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: MySecondaryButton(onPressed: () {}, text: 'Invite Friends'),
+          child: MySecondaryButton(
+            onPressed: () {
+              context.push(AppRoutes.inviteFriendPage);
+            },
+            text: 'Invite Friends',
+          ),
         ),
       ],
     );

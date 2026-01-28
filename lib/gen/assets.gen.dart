@@ -129,6 +129,12 @@ class $AssetsPngGen {
   AssetGenImage get authImage =>
       const AssetGenImage('assets/png/auth_image.png');
 
+  /// File path: assets/png/cafe_tes.png
+  AssetGenImage get cafeTes => const AssetGenImage('assets/png/cafe_tes.png');
+
+  /// File path: assets/png/cafe_test.png
+  AssetGenImage get cafeTest => const AssetGenImage('assets/png/cafe_test.png');
+
   /// File path: assets/png/card_black.png
   AssetGenImage get cardBlack =>
       const AssetGenImage('assets/png/card_black.png');
@@ -162,12 +168,30 @@ class $AssetsPngGen {
   AssetGenImage get logoWithName =>
       const AssetGenImage('assets/png/logo_with_name.png');
 
+  /// File path: assets/png/nature.png
+  AssetGenImage get nature => const AssetGenImage('assets/png/nature.png');
+
   /// File path: assets/png/prize.png
   AssetGenImage get prize => const AssetGenImage('assets/png/prize.png');
 
   /// File path: assets/png/prize_green.png
   AssetGenImage get prizeGreen =>
       const AssetGenImage('assets/png/prize_green.png');
+
+  /// File path: assets/png/tajmahal.png
+  AssetGenImage get tajmahal => const AssetGenImage('assets/png/tajmahal.png');
+
+  /// File path: assets/png/travel_invest_logo_airplane.png
+  AssetGenImage get travelInvestLogoAirplane =>
+      const AssetGenImage('assets/png/travel_invest_logo_airplane.png');
+
+  /// File path: assets/png/twin_buildings.png
+  AssetGenImage get twinBuildings =>
+      const AssetGenImage('assets/png/twin_buildings.png');
+
+  /// File path: assets/png/white_mosque.png
+  AssetGenImage get whiteMosque =>
+      const AssetGenImage('assets/png/white_mosque.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -176,6 +200,8 @@ class $AssetsPngGen {
     apple,
     applogo,
     authImage,
+    cafeTes,
+    cafeTest,
     cardBlack,
     cardBrown,
     cardGreen,
@@ -185,8 +211,13 @@ class $AssetsPngGen {
     homeBackground2,
     logoApp,
     logoWithName,
+    nature,
     prize,
     prizeGreen,
+    tajmahal,
+    travelInvestLogoAirplane,
+    twinBuildings,
+    whiteMosque,
   ];
 }
 
@@ -202,17 +233,35 @@ class $AssetsSvgGen {
   /// File path: assets/svg/bookmark_outlined.svg
   String get bookmarkOutlined => 'assets/svg/bookmark_outlined.svg';
 
+  /// File path: assets/svg/busines_inactive.svg
+  String get businesInactive => 'assets/svg/busines_inactive.svg';
+
+  /// File path: assets/svg/business_active.svg
+  String get businessActive => 'assets/svg/business_active.svg';
+
+  /// File path: assets/svg/business_partners.svg
+  String get businessPartners => 'assets/svg/business_partners.svg';
+
   /// File path: assets/svg/explore_filled.svg
   String get exploreFilled => 'assets/svg/explore_filled.svg';
 
   /// File path: assets/svg/explore_outlined.svg
   String get exploreOutlined => 'assets/svg/explore_outlined.svg';
 
+  /// File path: assets/svg/faq.svg
+  String get faq => 'assets/svg/faq.svg';
+
   /// File path: assets/svg/home_filled.svg
   String get homeFilled => 'assets/svg/home_filled.svg';
 
   /// File path: assets/svg/home_outlined.svg
   String get homeOutlined => 'assets/svg/home_outlined.svg';
+
+  /// File path: assets/svg/language_icon.svg
+  String get languageIcon => 'assets/svg/language_icon.svg';
+
+  /// File path: assets/svg/notification_icon.svg
+  String get notificationIcon => 'assets/svg/notification_icon.svg';
 
   /// File path: assets/svg/partners.svg
   String get partners => 'assets/svg/partners.svg';
@@ -226,19 +275,49 @@ class $AssetsSvgGen {
   /// File path: assets/svg/profile_outlined.svg
   String get profileOutlined => 'assets/svg/profile_outlined.svg';
 
+  /// File path: assets/svg/qr_code.svg
+  String get qrCode => 'assets/svg/qr_code.svg';
+
+  /// File path: assets/svg/referral.svg
+  String get referral => 'assets/svg/referral.svg';
+
+  /// File path: assets/svg/service_rules.svg
+  String get serviceRules => 'assets/svg/service_rules.svg';
+
+  /// File path: assets/svg/support_chat.svg
+  String get supportChat => 'assets/svg/support_chat.svg';
+
+  /// File path: assets/svg/travel_invest_logo_svg.svg
+  String get travelInvestLogoSvg => 'assets/svg/travel_invest_logo_svg.svg';
+
+  /// File path: assets/svg/wallet.svg
+  String get wallet => 'assets/svg/wallet.svg';
+
   /// List of all assets
   List<String> get values => [
     bellFilled,
     bookmarkFilled,
     bookmarkOutlined,
+    businesInactive,
+    businessActive,
+    businessPartners,
     exploreFilled,
     exploreOutlined,
+    faq,
     homeFilled,
     homeOutlined,
+    languageIcon,
+    notificationIcon,
     partners,
     partnersActive,
     profileFilled,
     profileOutlined,
+    qrCode,
+    referral,
+    serviceRules,
+    supportChat,
+    travelInvestLogoSvg,
+    wallet,
   ];
 }
 

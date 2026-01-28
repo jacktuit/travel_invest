@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_invest/common/extensions/number_extensions.dart';
 import 'package:travel_invest/widgets/app_bars/my_app_bar.dart';
 
 import 'discount_cards/build_cards.dart';
@@ -20,7 +21,7 @@ class DiscountCardsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: [BuildVideo(), BuildInfo(), BuildCards()],
+          children: [BuildVideo(), BuildInfo(), BuildCards(), 40.vertical],
         ),
       ),
     );

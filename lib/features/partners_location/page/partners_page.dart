@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_invest/app/theme/extensions.dart';
+import 'package:travel_invest/widgets/buttons/my_outlined_button.dart';
 import '../notifier/partners_notifier.dart';
 import '../widget/partner_empy_card.dart';
 import '../widget/partners_header.dart';
 import '../widget/universal_page.dart';
-
 
 class PartnersPage extends ConsumerWidget {
   const PartnersPage({super.key});
@@ -39,23 +39,25 @@ class PartnersPage extends ConsumerWidget {
                   child: filteredData.isEmpty
                       ? const EmptyPartnersWidget()
                       : RefreshIndicator(
-                    onRefresh: () =>
-                        ref.read(partnersProvider.notifier).refresh(),
-                    child: ListView.builder(
-                      padding: const EdgeInsets.only(bottom: 24),
-                      itemCount: filteredData.length,
-                      itemBuilder: (context, index) {
-                        final category = filteredData.keys.elementAt(index);
-                        final places = filteredData[category]!;
+                          onRefresh: () =>
+                              ref.read(partnersProvider.notifier).refresh(),
+                          child: ListView.builder(
+                            padding: const EdgeInsets.only(bottom: 24),
+                            itemCount: filteredData.length,
+                            itemBuilder: (context, index) {
+                              final category = filteredData.keys.elementAt(
+                                index,
+                              );
+                              final places = filteredData[category]!;
 
-                        return UniversalPlacePage(
-                          category: category,
-                          title: category.displayName,
-                          places: places,
-                        );
-                      },
-                    ),
-                  ),
+                              return UniversalPlacePage(
+                                category: category,
+                                title: category.displayName,
+                                places: places,
+                              );
+                            },
+                          ),
+                        ),
                 ),
               ],
             );
@@ -67,12 +69,23 @@ class PartnersPage extends ConsumerWidget {
                 children: [
                   const Icon(Icons.error_outline, size: 64, color: Colors.red),
                   const SizedBox(height: 16),
-                  Text(error.toString()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      "Error during fetch data please check internet and try again",
+                    ),
+                  ),
                   const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () =>
-                        ref.read(partnersProvider.notifier).refresh(),
-                    child: const Text('Qayta urinish'),
+
+                  Padding(
+
+                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                    child: MyOutlinedButton(
+                      text: 'Try again',
+                      onPressed: () =>
+                          ref.read(partnersProvider.notifier).refresh(),
+                    ),
                   ),
                 ],
               ),

@@ -40,6 +40,10 @@ dependencies:
   riverpod_annotation: ^4.0.0
   freezed_annotation: ^3.1.0
   flutter_facebook_auth: ^6.0.4
+  crypto: ^3.0.7
+  pretty_qr_code: ^3.5.0
+  toastification: ^3.0.3
+
 
 dev_dependencies:
   flutter_test:

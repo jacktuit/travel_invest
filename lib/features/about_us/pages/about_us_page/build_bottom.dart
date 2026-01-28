@@ -21,7 +21,8 @@ class BuildBottom extends StatelessWidget {
             children: [
               Expanded(
                 child: MyOutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                  },
                   text: 'Invite friends',
                 ),
               ),

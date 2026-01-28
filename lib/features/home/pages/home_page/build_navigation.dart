@@ -89,16 +89,16 @@ class BuildNavigation extends HookConsumerWidget {
                     width: iconSize,
                     height: iconSize,
                   ),
-                  title: _Label(label: 'Explore'),
+                  title: _Label(label: 'News'),
                 ),
                 SalomonBottomBarItem(
                   icon: SvgPicture.asset(
-                    Assets.svg.profileOutlined,
+                    Assets.svg.businesInactive,
                     width: iconSize,
                     height: iconSize,
                   ),
                   activeIcon: SvgPicture.asset(
-                    Assets.svg.profileFilled,
+                    Assets.svg.businessActive,
                     width: iconSize,
                     height: iconSize,
                   ),
