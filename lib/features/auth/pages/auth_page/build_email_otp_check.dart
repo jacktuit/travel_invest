@@ -111,7 +111,7 @@ class EmailOtpCheckPage extends HookConsumerWidget {
 
                   if (value.length == 4) {
                     if (extra.email == 'testtravelinvest@gmail.com') {
-                      context.push(AppRoutes.home);
+                      context.go(AppRoutes.home);
                       cache.setString("_tokenKey", "testTravelInvestToken");
                       return;
                     }
@@ -142,7 +142,7 @@ class EmailOtpCheckPage extends HookConsumerWidget {
                 onPressed: () {
                   if (pinValue.value.length == 4) {
                     if (extra.email == 'testtravelinvest@gmail.com') {
-                      context.push(AppRoutes.home);
+                      context.go(AppRoutes.home);
                       cache.setString("_tokenKey", "testTravelInvestToken");
                       return;
                     }

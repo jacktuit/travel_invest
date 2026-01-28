@@ -30,13 +30,13 @@ class InitialAuthLogin extends HookConsumerWidget {
     ref.listen(checkEmailProvider, (previous, next) {
       next.when(
         data: (data) {
-          if (data?.email == true) {
-            context.push(
-              AppRoutes.loginPage,
-              extra: LoginPageExtra(email: emailController.text),
-            );
-          }
-          if (data?.email == false && data?.id != null) {
+          // if (data?.email == true) {
+          //   context.push(
+          //     AppRoutes.loginPage,
+          //     extra: LoginPageExtra(email: emailController.text),
+          //   );
+          // }
+          if (data?.id != null) {
             context.push(
               AppRoutes.emailOtpCheckPage,
               extra: EmailOtpCheckPageExtra(

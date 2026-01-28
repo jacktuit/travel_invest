@@ -22,7 +22,7 @@ String _initialLocation() {
   String initialLocation = AppRoutes.initialAuthLogin;
 
   if (token != null) {
-    initialLocation = AppRoutes.home;
+    initialLocation = AppRoutes.initialAuthLogin;
   }
 
   return initialLocation;
@@ -73,7 +73,8 @@ final router = GoRouter(
       builder: (context, state) {
         return NewsNotificationsPage();
       },
-    ),  GoRoute(
+    ),
+    GoRoute(
       path: AppRoutes.companyInfoSourcePage,
       builder: (context, state) {
         return CompanyInfoSourcePage();
