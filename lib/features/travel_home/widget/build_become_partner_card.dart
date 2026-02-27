@@ -5,6 +5,8 @@ import 'package:travel_invest/widgets/buttons/my_button.dart';
 import 'package:travel_invest/widgets/buttons/my_secondary_button.dart';
 import 'package:travel_invest/widgets/cards/my_card.dart';
 
+import '../../../common/toast/toast.dart';
+
 class BuildBecomePartnerCard extends StatelessWidget {
   const BuildBecomePartnerCard({super.key});
 
@@ -38,7 +40,12 @@ class BuildBecomePartnerCard extends StatelessWidget {
               ),
             ),
             16.vertical,
-            MyButton(onPressed: () {}, text: "Becoming a partner"),
+            MyButton(
+              onPressed: () {
+                AppToast.showInfo(context, "Coming soon...");
+              },
+              text: "Becoming a partner",
+            ),
             8.vertical,
           ],
         ),

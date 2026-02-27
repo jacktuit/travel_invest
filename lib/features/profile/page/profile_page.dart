@@ -6,9 +6,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_invest/app/router/routes.dart';
 import 'package:travel_invest/common/extensions/number_extensions.dart';
 import 'package:travel_invest/common/toast/toast.dart';
+import 'package:travel_invest/data/cache/cache.dart';
 
 import '../../../app/theme/extensions.dart';
 import '../../../common/utils/utils.dart';
+import '../../../common/widget/yes_no_dialog.dart';
 import '../../../gen/assets.gen.dart';
 
 class ProfilePage extends ConsumerWidget {
@@ -24,6 +26,23 @@ class ProfilePage extends ConsumerWidget {
           "Profile",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              final isYes = await showYesNoDialog(
+                context: context,
+                title: 'Confirmation',
+                description: 'Do you want to log out of your account?',
+              );
+
+              if (isYes) {
+                cache.clear();
+                context.go(AppRoutes.initialAuthLogin);
+              } else {}
+            },
+            icon: Icon(Icons.logout_outlined, color: Colors.red, size: 20),
+          ),
+        ],
       ),
 
       body: Padding(
@@ -93,6 +112,25 @@ class ProfilePage extends ConsumerWidget {
                 AppToast.showInfo(context, "Cooming soon");
               },
             ),
+            10.vertical,
+            _item(
+              title: 'Delete account',
+              icon: Assets.svg.deleteOutlined,
+              onTap: () async {
+                final isYes = await showYesNoDialog(
+                  context: context,
+                  title: "Do you want to delete your account?",
+                  description:
+                      "Deleting your account will delete your cards and other personal information.",
+                );
+
+                if (isYes) {
+                  AppToast.showInfo(context, "Your account has been deleted.");
+                  cache.clear();
+                  context.go(AppRoutes.initialAuthLogin);
+                } else {}
+              },
+            ),
           ],
         ),
       ),
@@ -108,7 +146,7 @@ class ProfilePage extends ConsumerWidget {
       minTileHeight: 40,
       contentPadding: EdgeInsets.symmetric(horizontal: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      leading: SvgPicture.asset(icon),
+      leading: SvgPicture.asset(icon, width: 20, height: 20),
       onTap: () {
         onTap();
         Utils.vibrate();

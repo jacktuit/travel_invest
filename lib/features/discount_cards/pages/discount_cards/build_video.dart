@@ -10,8 +10,7 @@ class BuildVideo extends StatefulWidget {
 }
 
 class _BuildVideoState extends State<BuildVideo> {
-  static const _url =
-      'https://www.shutterstock.com/shutterstock/videos/3830843847/preview/stock-footage-white-car-driving-along-picturesque-mountain-ridge-in-the-morning-through-green-meadows-crossing.webm';
+  static const _videoAsset = 'assets/videos/travel_video.mp4';
 
   VideoPlayerController? _videoPlayerController;
   ChewieController? _chewieController;
@@ -20,23 +19,25 @@ class _BuildVideoState extends State<BuildVideo> {
   void initState() {
     super.initState();
 
-    _videoPlayerController = VideoPlayerController.networkUrl(
-      Uri.parse(_url),
-      viewType: VideoViewType.platformView,
-    );
+    _videoPlayerController = VideoPlayerController.asset(_videoAsset);
 
-    _videoPlayerController!.initialize().then((_) {
-      if (mounted) {
-        _chewieController = ChewieController(
-          videoPlayerController: _videoPlayerController!,
-          autoPlay: false,
-          looping: true,
-          aspectRatio: _videoPlayerController!.value.aspectRatio,
-        );
+    _videoPlayerController!
+        .initialize()
+        .then((_) {
+          if (mounted) {
+            _chewieController = ChewieController(
+              videoPlayerController: _videoPlayerController!,
+              autoPlay: false,
+              looping: true,
+              aspectRatio: _videoPlayerController!.value.aspectRatio,
+            );
 
-        setState(() {});
-      }
-    });
+            setState(() {});
+          }
+        })
+        .catchError((error) {
+          print('Video initialization error: $error');
+        });
   }
 
   @override
@@ -77,7 +78,7 @@ class _BuildVideoState extends State<BuildVideo> {
                       Icon(Icons.videocam, size: 48, color: Colors.grey),
                       SizedBox(height: 12),
                       Text(
-                        'Loading video...',
+                        'Loading videos...',
                         style: TextStyle(color: Colors.grey),
                       ),
                     ],

@@ -181,6 +181,10 @@ class $AssetsPngGen {
   /// File path: assets/png/tajmahal.png
   AssetGenImage get tajmahal => const AssetGenImage('assets/png/tajmahal.png');
 
+  /// File path: assets/png/travel_invest_app_logo.png
+  AssetGenImage get travelInvestAppLogo =>
+      const AssetGenImage('assets/png/travel_invest_app_logo.png');
+
   /// File path: assets/png/travel_invest_logo_airplane.png
   AssetGenImage get travelInvestLogoAirplane =>
       const AssetGenImage('assets/png/travel_invest_logo_airplane.png');
@@ -215,6 +219,7 @@ class $AssetsPngGen {
     prize,
     prizeGreen,
     tajmahal,
+    travelInvestAppLogo,
     travelInvestLogoAirplane,
     twinBuildings,
     whiteMosque,
@@ -241,6 +246,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/business_partners.svg
   String get businessPartners => 'assets/svg/business_partners.svg';
+
+  /// File path: assets/svg/delete_outlined.svg
+  String get deleteOutlined => 'assets/svg/delete_outlined.svg';
 
   /// File path: assets/svg/explore_filled.svg
   String get exploreFilled => 'assets/svg/explore_filled.svg';
@@ -301,6 +309,7 @@ class $AssetsSvgGen {
     businesInactive,
     businessActive,
     businessPartners,
+    deleteOutlined,
     exploreFilled,
     exploreOutlined,
     faq,
@@ -331,6 +340,16 @@ class $AssetsTranslationsGen {
   List<String> get values => [uz];
 }
 
+class $AssetsVideosGen {
+  const $AssetsVideosGen();
+
+  /// File path: assets/videos/travel_video.mp4
+  String get travelVideo => 'assets/videos/travel_video.mp4';
+
+  /// List of all assets
+  List<String> get values => [travelVideo];
+}
+
 class Assets {
   const Assets._();
 
@@ -338,6 +357,7 @@ class Assets {
   static const $AssetsPngGen png = $AssetsPngGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
+  static const $AssetsVideosGen videos = $AssetsVideosGen();
 }
 
 class AssetGenImage {

@@ -22,7 +22,7 @@ String _initialLocation() {
   String initialLocation = AppRoutes.initialAuthLogin;
 
   if (token != null) {
-    initialLocation = AppRoutes.initialAuthLogin;
+    initialLocation = AppRoutes.home;
   }
 
   return initialLocation;

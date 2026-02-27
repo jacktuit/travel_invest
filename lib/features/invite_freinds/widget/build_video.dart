@@ -77,7 +77,7 @@ class _BuildVideoState extends State<BuildVideo> {
                       Icon(Icons.videocam, size: 48, color: Colors.grey),
                       SizedBox(height: 12),
                       Text(
-                        'Loading video...',
+                        'Loading videos...',
                         style: TextStyle(color: Colors.grey),
                       ),
                     ],

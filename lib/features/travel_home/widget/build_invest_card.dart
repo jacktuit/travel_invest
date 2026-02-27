@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_invest/app/router/routes.dart';
+import 'package:travel_invest/common/toast/toast.dart';
 import 'package:travel_invest/gen/assets.gen.dart';
 import 'package:travel_invest/widgets/buttons/my_button.dart';
 import 'package:travel_invest/widgets/cards/my_card.dart';
@@ -185,7 +186,9 @@ class _PrizeDraws extends StatelessWidget {
         ),
         SizedBox(width: 2),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            AppToast.showInfo(context, "Coming soon...");
+          },
           style: TextButton.styleFrom(
             padding: EdgeInsets.symmetric(horizontal: 4),
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
