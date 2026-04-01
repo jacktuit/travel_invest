@@ -119,6 +119,10 @@ class $AssetsPngGen {
   /// File path: assets/png/Stars.png
   AssetGenImage get stars => const AssetGenImage('assets/png/Stars.png');
 
+  /// File path: assets/png/app_new_logo.png
+  AssetGenImage get appNewLogo =>
+      const AssetGenImage('assets/png/app_new_logo.png');
+
   /// File path: assets/png/apple.png
   AssetGenImage get apple => const AssetGenImage('assets/png/apple.png');
 
@@ -201,6 +205,7 @@ class $AssetsPngGen {
   List<AssetGenImage> get values => [
     head,
     stars,
+    appNewLogo,
     apple,
     applogo,
     authImage,

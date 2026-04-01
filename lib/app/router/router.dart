@@ -21,7 +21,7 @@ String _initialLocation() {
   print(token);
   String initialLocation = AppRoutes.initialAuthLogin;
 
-  if (token != null) {
+  if (token == null) {
     initialLocation = AppRoutes.home;
   }
 
@@ -91,12 +91,12 @@ final router = GoRouter(
         return PartnersPage();
       },
     ),
-    GoRoute(
-      path: AppRoutes.facebookPage,
-      builder: (context, state) {
-        return FacebookPage();
-      },
-    ),
+    // GoRoute(
+    //   path: AppRoutes.facebookPage,
+    //   builder: (context, state) {
+    //     return FacebookPage();
+    //   },
+    // ),
     GoRoute(
       path: AppRoutes.initialAuthLogin,
       builder: (context, state) {
