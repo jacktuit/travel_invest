@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["2M9QYY9NBD.uz.realsoft.travel.invest"],
+        "components": [
+          {
+            "/": "/*",
+            "comment": "Barcha linklarni ilovada ochish"
+          }
+        ]
+      }
+    ]
+  }
+}

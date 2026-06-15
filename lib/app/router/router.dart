@@ -85,7 +85,8 @@ final router = GoRouter(
       builder: (context, state) {
         return ProfilePage();
       },
-    ),   GoRoute(
+    ),
+    GoRoute(
       path: AppRoutes.partnersPage,
       builder: (context, state) {
         return PartnersPage();

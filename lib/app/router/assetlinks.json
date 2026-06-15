@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "uz.realsoft.travel.invest",
+      "sha256_cert_fingerprints": [
+        "5E:6C:8C:25:D7:C6:83:17:04:65:71:29:9E:72:11:0F:F4:0B:52:F6:63:FE:37:C9:35:B1:35:7A:D9:C7:9A:AB",
+        "30:3D:58:65:54:16:9A:9F:A9:B2:B3:25:F6:93:02:5F:48:D1:7D:1D:86:6E:A4:76:0A:22:77:A8:C2:47:CB:5D"
+      ]
+    }
+  }
+]
