@@ -21,7 +21,7 @@ String _initialLocation() {
   print(token);
   String initialLocation = AppRoutes.initialAuthLogin;
 
-  if (token == null) {
+  if (token != null) {
     initialLocation = AppRoutes.home;
   }
 

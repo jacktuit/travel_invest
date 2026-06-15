@@ -182,6 +182,9 @@ class $AssetsPngGen {
   AssetGenImage get prizeGreen =>
       const AssetGenImage('assets/png/prize_green.png');
 
+  /// File path: assets/png/sign_bg.png
+  AssetGenImage get signBg => const AssetGenImage('assets/png/sign_bg.png');
+
   /// File path: assets/png/tajmahal.png
   AssetGenImage get tajmahal => const AssetGenImage('assets/png/tajmahal.png');
 
@@ -223,6 +226,7 @@ class $AssetsPngGen {
     nature,
     prize,
     prizeGreen,
+    signBg,
     tajmahal,
     travelInvestAppLogo,
     travelInvestLogoAirplane,
